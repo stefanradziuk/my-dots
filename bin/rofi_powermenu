@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# adapted from: github / patrick-motard / dotfiles
+
+options="lock
+logout
+sleep
+reboot
+shutdown"
+
+selection=$(echo -e "${options}" | rofi -dmenu -lines 6)
+locker=/home/stefan/bin/lockme
+
+echo "This is your selection: $selection"
+
+case "${selection}" in
+    "lock")
+        exec $locker;;
+    "logout")
+        i3-msg exit;;
+    "sleep")
+        $locker && systemctl suspend;;
+    "reboot")
+        systemctl reboot;;
+    "shutdown")
+        systemctl poweroff -i;;
+esac

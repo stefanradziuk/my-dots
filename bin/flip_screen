@@ -1,0 +1,14 @@
+#!/bin/bash
+
+STATE=/home/stefan/bin/flip_screen_state
+ROTATE=/home/stefan/bin/rotate_desktop.sh
+
+cat $STATE
+if [ $(cat $STATE) = 0 ]; then
+    echo 1 > $STATE
+    $ROTATE inverted
+else
+    echo 0 > $STATE
+    $ROTATE normal
+fi
+

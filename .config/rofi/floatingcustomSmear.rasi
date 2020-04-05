@@ -1,0 +1,170 @@
+/**
+ * A floating box version of the paper theme.
+ *
+ * User: Qball
+ * Copyright: Dave Davenport
+ * Color scheme changed
+ */
+* {
+    space:	#20242c; //background
+    steel:	#b3b8c4; //light texts
+    accent:	#e5c078; //current selection
+    grey:	#20242c;
+
+    spacing: 2;
+    background-color: #00000000;
+    border-color: @steel;
+    anchor: north;
+    location: center;
+
+    font: "Fira Code Regular 14";
+}
+
+#window {
+    transparency: "screenshot";
+    background-color: #00000000;
+    border: 0;
+    padding: 0% 0% 1em 0%;
+    x-offset: 0;
+    y-offset: -10%;
+}
+
+#mainbox {
+    padding: 0px;
+    border: 0;
+    spacing: 1%;
+}
+
+#message {
+    border: 2px; 
+    padding: 1em; 
+    background-color: @space; 
+    text-color: @steel;
+}
+
+#textbox {
+    border: 2px; 
+    padding: 1em;
+    background-color: @space; 
+    text-color: @steel;
+}
+
+
+#listview {
+    fixed-height: 1;
+    border: 2px;
+    padding: 1em;
+    reverse: false;
+    columns: 1;
+    background-color: @space; 
+}
+
+#element {
+    border: 0;
+    padding: 2px;
+    highlight: bold ;
+}
+
+//alternating colors dark
+#element normal.normal {
+    text-color: @steel;
+    background-color: @space;
+}
+
+#element normal.urgent {
+    text-color: #D75F00FF;
+    background-color: #F5F5F5FF;
+}
+
+#element normal.active {
+    text-color: #005F87FF;
+    background-color: #F5F5F5FF;
+}
+
+
+
+//alternating colors light
+#element alternate.normal {
+    text-color: @space;
+    background-color: @steel; 
+}
+
+#element alternate.urgent {
+    text-color: @space;
+    background-color: @steel;
+}
+
+#element alternate.active {
+    text-color: @space;
+    background-color: @steel;
+}
+
+
+#element selected.normal {
+    text-color: @space;
+    background-color: @accent;
+}
+
+#element selected.urgent {
+    text-color: @space;
+    background-color: @accent;
+}
+
+#element selected.active {
+    text-color: @space;
+    background-color: @accent;
+}
+
+
+#scrollbar {
+    border: 0;
+    padding: 0;
+}
+
+#inputbar {
+    spacing: 0;
+    border: 2px;
+    padding: 0.5em 1em;
+    background-color: @space;
+    index: 0;
+}
+
+#inputbar normal {
+    foreground-color: @space;
+    background-color: @space;
+}
+
+
+#sidebar {
+    border: 2px;
+    padding: 0.5em 1em;
+    background-color: @grey;
+    index: 10;
+}
+
+#button selected {
+    text-color: #4271AEFF;
+}
+
+#inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+
+#entry {
+    text-color: @steel;
+}
+
+
+#prompt {
+    text-color: @steel;
+}
+
+
+#textbox-prompt-colon {
+    expand:     false;
+    str:        "ː";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @steel;
+}
+

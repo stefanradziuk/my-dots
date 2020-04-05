@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PREV_VAL=/home/stefan/bin/backlight_prev_val
+
+if [ $(xbacklight -get) = 0.000000 ]; then
+    xbacklight -set $(cat $PREV_VAL)
+else
+    xbacklight -get > $PREV_VAL
+    xbacklight -set 0
+fi
+

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+green="\x1b[32m"
+red="\x1b[31m"
+reset="\x1b[m"
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+ON="$green$bold ON $normal$reset"
+OFF="$red$bold OFF $normal$reset"
+
+if (ping -W 2 -c 1 192.168.0.1 &>/dev/null) then
+    echo -e "LAN:\t$ON"
+else 
+    echo -e "LAN:\t$OFF"
+fi
+
+if (ping -W 2 -c 1 www.wikipedia.org &>/dev/null) then
+    echo -e "DNS:\t$ON"
+else
+    echo -e "DNS:\t$OFF"
+fi

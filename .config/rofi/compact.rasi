@@ -1,0 +1,158 @@
+/**
+ * A floating box version of the paper theme.
+ *
+ * User: Qball
+ * Copyright: Dave Davenport
+ * Color scheme changed
+ */
+
+* {
+  space: #1c1c1c; //background
+  steel: #d0d0d0; //light texts
+  accent: #87afaf; //current selection #d68787
+  grey: #1c1c1c;
+  spacing: 0;
+  background-color: #00000000;
+  anchor: north;
+  location: center;
+  font: "Fira Code Regular 15";
+}
+
+#window {
+  transparency: "screenshot";
+  background-color: #00000000;
+  border: 0;
+  padding: 0%;
+  x-offset: 0;
+  y-offset: -15%;
+  width: 600px;
+}
+
+#mainbox {
+  padding: 0;
+  border: 0;
+  spacing: -2px; //gap between the prompt and suggestions
+}
+
+#message {
+  border: 0;
+  padding: 1em;
+  background-color: @space;
+  text-color: @steel;
+}
+
+// error box
+#textbox {
+  border: 0;
+  text-color: #d68787;
+  padding: 0.5em;
+  background-color: @space;
+}
+
+#listview {
+  fixed-height: 1;
+  border: 0;
+  padding: 0em;
+  reverse: false;
+  columns: 1;
+  background-color: @space;
+}
+
+#element {
+  border: 0px;
+  padding: 0.25em 0.5em;
+  highlight: bold;
+}
+
+#element normal.normal {
+  text-color: @steel;
+  background-color: @space;
+}
+
+#element normal.urgent {
+  text-color: #D75F00FF;
+  background-color: #F5F5F5FF;
+}
+
+#element normal.active {
+  text-color: #005F87FF;
+  background-color: #F5F5F5FF;
+}
+
+#element alternate.normal {
+  text-color: @steel;
+  background-color: @space;
+}
+
+#element alternate.urgent {
+  text-color: @space;
+  background-color: @steel;
+}
+
+#element alternate.active {
+  text-color: @space;
+  background-color: @steel;
+}
+
+#element selected.normal {
+  text-color: @space;
+  background-color: @accent;
+}
+
+#element selected.urgent {
+  text-color: @space;
+  background-color: @accent;
+}
+
+#element selected.active {
+  text-color: @space;
+  background-color: @accent;
+}
+
+#scrollbar {
+  border: 0;
+  padding: 0;
+}
+
+#inputbar {
+  spacing: 0;
+  border: 0;
+  padding: 0.5em;
+  background-color: @space;
+  index: 0;
+}
+
+#inputbar normal {
+  foreground-color: @space;
+  background-color: @space;
+}
+
+#sidebar {
+  border: 2px;
+  padding: 0.5em 1em;
+  background-color: @grey;
+  index: 10;
+}
+
+#button selected {
+  text-color: #4271AEFF;
+}
+
+#inputbar {
+  background-color: @accent;
+  children: [ prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+#entry {
+  margin: 0em 0em 0em 0px;
+}
+
+#prompt {
+  margin: 0em;
+}
+
+#textbox-prompt-colon {
+  expand: false;
+  str: ":";
+  margin: 0em 0.125em 0em 0em;
+}

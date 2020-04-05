@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scrot -a $(slop -f '%x,%y,%w,%h') -e 'mv $f ~/pictures/screenshots/'

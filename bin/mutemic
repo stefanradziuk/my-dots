@@ -1,0 +1,17 @@
+#!/bin/bash
+
+led="/sys/devices/platform/thinkpad_acpi/leds/tpacpi::micmute/brightness"
+user=$(who | awk '/0\.0/{print $1; exit;}')
+[[ -z $user ]] && user=root
+if [[ $(amixer sget Capture) == *"[on]"* ]]; then
+  logger "Microphone is now muted (for $user) $USER"
+  amixer sset Capture nocap
+  [[ -f $led ]] && echo 1 > $led
+  sudo -u $user DISPLAY=":0.0" notify-send -i microphone-sensitivity-muted-symbolic "Microphone" "Microphone is now <b>MUTED</b>"
+else
+  logger "Microphone is now on (for $user)"
+  amixer sset Capture cap
+  [[ -f $led ]] && echo 0 > $led
+  sudo -u $user DISPLAY=":0.0" notify-send -i microphone-sensitivity-high-symbolic "Microphone" "Microphone is now <b>ON</b>"
+fi
+
