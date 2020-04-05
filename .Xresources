@@ -1,0 +1,99 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:		      	120
+Xft.antialias:			true
+Xft.rgba:			      rgb
+Xft.hinting:	  		true
+Xft.hintstyle:			hintslight
+
+URxvt.depth:          32
+URxvt.geometry:			  90x30
+URxvt.transparent:	  false
+URxvt.shading:			  20
+URxvt.fading:         0
+! URxvt.urgentOnBell:		true
+! URxvt.visualBell:	  	true
+URxvt.loginShell:		  true
+URxvt.saveLines:		  1000
+URxvt.internalBorder:	8
+URxvt.lineSpace:		  0
+
+
+! Fix font space
+URxvt*letterSpace: 0
+
+! Fonts
+! Fira Mono for Powerline, Roboto Mono for Powerline, Noto Mono for Powerline (no bold)
+! not installed - Iosevka
+
+URxvt.allow_bold:		true
+URxvt*font:   			xft:Fira Mono for Powerline:style=Regular:pixelsize=20:minspace=False, xft:DejaVu Sans:pixelsize=13
+URxvt*boldFont:			xft:Fira Mono for Powerline:style=Bold:pixelsize=20:minspace=False, xft:DejaVu Sans:pixelsize=13
+
+! Scrollbar
+URxvt.scrollStyle:	rxvt
+URxvt.scrollBar:		false
+
+! Perl extensions
+URxvt.perl-ext-common:  default,matcher,font-size
+URxvt.matcher.button:	 	1
+URxvt.urlLauncher:	  	chromium
+
+! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-equal:  font-size:increase
+URxvt.keysym.C-slash:  font-size:show
+
+! seoul256
+URxvt*background: #1c1c1c
+URxvt*foreground: #d0d0d0
+URxvt*color0: #4e4e4e
+URxvt*color1: #d68787
+URxvt*color2: #5f865f
+URxvt*color3: #d8af5f
+URxvt*color4: #85add4
+URxvt*color5: #d7afaf
+URxvt*color6: #87afaf
+URxvt*color7: #d0d0d0
+URxvt*color8: #626262
+URxvt*color9: #d75f87
+URxvt*color10: #87af87
+URxvt*color11: #ffd787
+URxvt*color12: #add4fb
+URxvt*color13: #ffafaf
+URxvt*color14: #87d7d7
+URxvt*color15: #e4e4e4
+URxvt*cursorColor: #d0d0d0
+URxvt*cursorColor2: #3a3a3a
+URxvt*colorBD: #e4e4e4
+
+XTerm*background: #1c1c1c
+XTerm*foreground: #d0d0d0
+XTerm*color0: #4e4e4e
+XTerm*color1: #d68787
+XTerm*color2: #5f865f
+XTerm*color3: #d8af5f
+XTerm*color4: #85add4
+XTerm*color5: #d7afaf
+XTerm*color6: #87afaf
+XTerm*color7: #d0d0d0
+XTerm*color8: #626262
+XTerm*color9: #d75f87
+XTerm*color10: #87af87
+XTerm*color11: #ffd787
+XTerm*color12: #add4fb
+XTerm*color13: #ffafaf
+XTerm*color14: #87d7d7
+XTerm*color15: #e4e4e4
+
+XTerm.allow_bold:		true
+XTerm*font:   			xft:Fira Mono for Powerline:style=Regular:pixelsize=20:minspace=False
+XTerm*boldFont:			xft:Fira Mono for Powerline:style=Bold:pixelsize=20:minspace=False

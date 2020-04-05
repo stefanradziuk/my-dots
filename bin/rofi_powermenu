@@ -8,7 +8,7 @@ sleep
 reboot
 shutdown"
 
-selection=$(echo -e "${options}" | rofi -dmenu -lines 5)
+selection=$(echo -e "${options}" | rofi -dmenu -p "power menu" -lines 5)
 locker=/home/stefan/bin/lockme
 
 echo "This is your selection: $selection"
