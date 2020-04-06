@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+selection=$(xrandr --listmonitors | sed '1d' | awk 'NF>1{print$NF}' | rofi -no-custom -dmenu -i -p "map touch to")
+
+[[ -z "$selection" ]] && echo "No selection made" && exit 0
+
+echo "This is your selection: $selection"
+
+xinput map-to-output "Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)" "$selection"
+xinput map-to-output "Wacom Pen and multitouch sensor Finger" "$selection"
