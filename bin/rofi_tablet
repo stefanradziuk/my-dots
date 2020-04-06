@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+options="keyboard
+rofi launcher
+screen flip
+exit tablet mode
+power menu"
+
+selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 5)
+
+echo "This is your selection: $selection"
+
+case "${selection}" in
+    "screen flip")
+        /home/stefan/bin/flip_screen;;
+    "keyboard")
+        onboard;;
+    "rofi launcher")
+        rofi -show run;;
+    "exit tablet mode")
+        /home/stefan/.config/polybar/launch.sh;;
+    "power menu")
+        /home/stefan/bin/rofi_powermenu;;
+esac
