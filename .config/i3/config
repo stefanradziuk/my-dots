@@ -65,6 +65,9 @@ bindsym $mod+Shift+g exec --no-startup-id rofi -show ssh -lines 4
 bindsym $mod+m exec --no-startup-id /home/stefan/bin/rofi_mons
 bindsym $mod+Shift+m exec --no-startup-id /home/stefan/bin/rofi_dualmonitor_touch
 
+# rofi setxkbmap picker
+bindsym $mod+n exec --no-startup-id /home/stefan/bin/rofi_kbmap
+
 # screenshot
 bindsym $mod+Shift+s exec --no-startup-id /home/stefan/bin/sscrot
 

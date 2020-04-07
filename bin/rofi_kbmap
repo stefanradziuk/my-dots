@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+current=$(setxkbmap -query | awk '{if ($1=="layout:") print $2}')
+
+echo "Your current keyboard map is: $current"
+
+options="gb_personal
+pl_personal
+gb
+pl"
+
+selection=$(echo -e "${options}" | awk '{print $0=="'$current'" ? "> "$0 : $0}' | rofi -dmenu -p "keyboard layout" | awk '{print $NF}')
+
+echo "This is your selection: $selection"
+
+case "${selection}" in
+    "gb_personal")
+        setxkbmap -layout gb_personal -variant pl;;
+    "gb")
+        setxkbmap -layout gb -variant pl;;
+    "pl_personal")
+        setxkbmap -layout pl_personal;;
+    "pl")
+        setxkbmap -layout pl;;
+esac
