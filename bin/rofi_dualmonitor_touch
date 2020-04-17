@@ -8,3 +8,4 @@ echo "This is your selection: $selection"
 
 xinput map-to-output "Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)" "$selection"
 xinput map-to-output "Wacom Pen and multitouch sensor Finger" "$selection"
+xinput map-to-output "Wacom Pen and multitouch sensor Pen Eraser (0x9b0d329c)" $selection
