@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'lervag/vimtex'
+Plug 'zxqfl/tabnine-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -15,9 +16,12 @@ syntax on
 set nocompatible
 filetype plugin indent on
 set mouse=a
+set ttymouse=sgr
 set whichwrap=b,s,<,>,[,]
 set number relativenumber
 " set colorcolumn=80
+set ignorecase
+set smartcase
 
 set laststatus=2
 set noshowmode
