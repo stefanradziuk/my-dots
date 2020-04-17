@@ -26,6 +26,7 @@ alert = #d68787
 
 [bar/bot]
 monitor = ${env:MONITOR:eDP1}
+monitor-fallback = ${env:MONITOR:HDMI2}
 width = 100%
 height = 30
 ;offset-x = 1%
@@ -58,7 +59,7 @@ font-3 = siji:pixelsize=8;1
 ; filesystem mpd bspwm powermenu pulseaudio xbacklight xkeyboard
 modules-left = i3
 modules-center =
-modules-right = alsa battery wlan eth date
+modules-right = pulseaudio battery wlan eth date
 
 tray-position = right
 tray-padding = 0
@@ -84,6 +85,7 @@ scroll-down = i3wm-wsprev
 
 [bar/tablet_bot]
 monitor = ${env:MONITOR:eDP1}
+monitor-fallback = ${env:MONITOR:HDMI2}
 width = 100%
 height = 30
 ;offset-x = 1%
@@ -117,64 +119,6 @@ font-3 = siji:pixelsize=8;1
 modules-left = i3
 modules-center =
 modules-right = tablet alsa battery wlan eth date
-
-tray-position = right
-tray-padding = 0
-;tray-background = #0063ff
-
-separator = |
-;%{F#949494}|%{F-}
-;separator = %{F#d8af5f}|%{F-}
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
-; cursor-click = arrow
-; cursor-scroll = arrow
-
-[bar/tablet_bot_old]
-monitor = ${env:MONITOR:eDP1}
-width = 100%
-height = 30
-;offset-x = 1%
-;offset-y = 1%
-radius = 0
-fixed-center = false
-
-bottom = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 0
-line-color = ${colors.primary}
-
-border-size = 0
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = Fira Mono:style=Bold:pixelsize=13;1
-font-1 = DejaVuSansMono Nerd Font Mono:pixelsize=13;1
-font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-3 = siji:pixelsize=8;1
-
-; filesystem mpd bspwm powermenu pulseaudio xbacklight
-modules-left = i3
-modules-center =
-modules-right = keyboard rofi flip alsa battery wlan eth date
 
 tray-position = right
 tray-padding = 0
@@ -404,13 +348,14 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
+;label-volume = 🔈 %percentage%%
 
 format-volume = <label-volume> <bar-volume>
-label-volume = 🔈 %percentage%%
+label-volume = 奄
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
-label-muted-foreground = #666
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = 奄 muted
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.foreground}
@@ -421,13 +366,15 @@ bar-volume-foreground-4 = ${colors.foreground}
 bar-volume-foreground-5 = ${colors.foreground}
 bar-volume-foreground-6 = ${colors.foreground}
 bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-indicator = ▒
+bar-volume-indicator-foreground = #fff
+bar-volume-indicator-font = 3
+bar-volume-fill = ▓
+bar-volume-fill-font = 3
+bar-volume-fill-foreground = ${colors.foreground}
+bar-volume-empty = ░
+bar-volume-empty-font = 3
+bar-volume-empty-foreground = ${colors.foreground}
 
 [module/alsa]
 type = internal/alsa
@@ -583,17 +530,3 @@ content = 
 ; 
 click-left = /home/stefan/bin/rofi_tablet
 
-[module/flip]
-type = custom/text
-content = flip
-click-left = /home/stefan/bin/flip_screen
-
-[module/keyboard]
-type = custom/text
-content = keyboard
-click-left = onboard
-
-[module/rofi]
-type = custom/text
-content = rofi
-click-left = rofi -show run
