@@ -1,4 +1,0 @@
-#!/bin/sh
-
-/usr/bin/google-chrome-beta
-# --enable-features=WebUIDarkMode --force-dark-mode

@@ -3,8 +3,8 @@
 options="keyboard
 rofi launcher
 screen flip
-exit tablet mode
-power menu"
+power menu
+exit tablet mode"
 
 selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 5)
 

@@ -1,3 +1,14 @@
 #!/bin/bash
+# screenshots, copies to clipboard and saves a selected region, doesn't save if -c flag passed
 
-scrot -a $(slop -f '%x,%y,%w,%h') -e 'mv $f ~/pictures/screenshots/'
+while getopts ":c" opt; do
+  case $opt in
+    c )
+      scrot -a $(slop -f '%x,%y,%w,%h') -e 'xclip -t image/png -selection clipboard $f ; rm $f' ; exit 0 ;;
+    \? ) echo "Unknown option" ;;
+  esac
+done
+
+scrot -a $(slop -f '%x,%y,%w,%h') -e 'mv $f ~/pictures/screenshots/ ; xclip -t image/png -selection clipboard "/home/stefan/pictures/screenshots/$f"'
+
+

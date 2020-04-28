@@ -49,7 +49,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id zsh -c "rofi -show run"
 # alternatively, using desktop entries
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu'
 
@@ -69,7 +69,7 @@ bindsym $mod+Shift+m exec --no-startup-id /home/stefan/bin/rofi_dualmonitor_touc
 bindsym $mod+n exec --no-startup-id /home/stefan/bin/rofi_kbmap
 
 # screenshot
-bindsym $mod+Shift+s exec --no-startup-id /home/stefan/bin/sscrot
+bindsym $mod+Shift+s exec --no-startup-id /home/stefan/bin/sscrot -c
 
 # lockscreen
 # bindsym Mod1+k exec --no-startup-id i3lock -ui /home/stefan/wallpapers/lock/stalenhag_lock.png
@@ -229,7 +229,7 @@ default_border          pixel 0
 default_floating_border pixel 0
 smart_borders           on
 
-smart_gaps  on
+# smart_gaps  on
 gaps inner  0
 gaps outer  0
 
@@ -256,6 +256,8 @@ gaps outer  0
 # }
 
 exec --no-startup-id i3-battery-popup -L 18 -N
+
+exec--no-startup-id python /home/stefan/bin/workspace_renumber.py
 
 exec_always --no-startup-id /home/stefan/.config/polybar/launch.sh
 

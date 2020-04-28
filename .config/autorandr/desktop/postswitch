@@ -1,7 +1,3 @@
 #!/bin/bash
 
-output=eDP1
-
-xinput map-to-output "Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)" $output
-xinput map-to-output "Wacom Pen and multitouch sensor Finger" $output
-xinput map-to-output "Wacom Pen and multitouch sensor Pen Eraser (0x9b0d329c)" $output
+/home/stefan/bin/touch_mapper eDP1

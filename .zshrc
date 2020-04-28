@@ -77,7 +77,8 @@ else
   export EDITOR='vim'
 fi
 
-export BROWSER='/home/stefan/bin/chrome'
+export BROWSER='/usr/bin/google-chrome-beta'
+# export BROWSER='/home/stefan/bin/google-chrome-beta'
 
 . /home/stefan/bin/z.sh
 

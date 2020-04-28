@@ -29,8 +29,8 @@ URxvt*letterSpace: 0
 ! not installed - Iosevka
 
 URxvt.allow_bold:		true
-URxvt*font:   			xft:Fira Mono for Powerline:style=Regular:pixelsize=20:minspace=False, xft:DejaVu Sans:pixelsize=13
-URxvt*boldFont:			xft:Fira Mono for Powerline:style=Bold:pixelsize=20:minspace=False, xft:DejaVu Sans:pixelsize=13
+URxvt*font:   			xft:Fira Mono:style=Regular:pixelsize=20:minspace=False, xft:DejaVu Sans:pixelsize=13
+URxvt*boldFont:			xft:Fira Mono:style=Bold:pixelsize=20:minspace=False, xft:DejaVu Sans:pixelsize=13
 
 ! Scrollbar
 URxvt.scrollStyle:	rxvt
@@ -47,10 +47,10 @@ URxvt.keysym.Shift-Down: command:\033]721;1\007
 URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Left: \033[1;5D
 
-URxvt.keysym.C-Up:     font-size:increase
-URxvt.keysym.C-Down:   font-size:decrease
-URxvt.keysym.C-equal:  font-size:increase
-URxvt.keysym.C-slash:  font-size:show
+! URxvt.keysym.C-PgUp:     font-size:increase
+! URxvt.keysym.C-PgDown:   font-size:decrease
+URxvt.keysym.C-equal:    font-size:increase
+URxvt.keysym.C-slash:    font-size:show
 
 ! seoul256
 URxvt*background: #1c1c1c

@@ -118,7 +118,7 @@ font-3 = siji:pixelsize=8;1
 ; filesystem mpd bspwm powermenu pulseaudio xbacklight
 modules-left = i3
 modules-center =
-modules-right = tablet pulseaudio battery wlan eth date
+modules-right = tablet alsa battery wlan eth date
 
 tray-position = right
 tray-padding = 0
@@ -350,8 +350,8 @@ label = %date% %time%
 type = internal/pulseaudio
 ;label-volume = 🔈 %percentage%%
 
-format-volume = <label-volume>
-label-volume = 奄 %percentage%%
+format-volume = <label-volume> <bar-volume>
+label-volume = 奄
 label-volume-foreground = ${root.foreground}
 
 format-muted-foreground = ${colors.foreground-alt}
@@ -417,14 +417,14 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <label-charging> <animation-charging>
 format-charging-underline = ${colors.background}
 
 ; format-discharging = <ramp-capacity> <label-discharging>
-format-discharging =  <label-discharging>
+format-discharging =  <bar-capacity>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = "%{F#87af87}%{F-} "
+format-full-prefix = "%{F#87af87} %{T3}▓▓▓▓▓▓▓▓▓▓%{T-}%{F-} "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = #5f865f
 
@@ -442,19 +442,19 @@ bar-capacity-fill-font = 3
 bar-capacity-empty = ░
 bar-capacity-empty-font = 3
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-; animation-charging-0 = ░░░░░░░░░░
-; animation-charging-1 = ▓░░░░░░░░░
-; animation-charging-2 = ▓▓░░░░░░░░
-; animation-charging-3 = ▓▓▓░░░░░░░
-; animation-charging-4 = ▓▓▓▓▓░░░░░
-; animation-charging-5 = ▓▓▓▓▓▓░░░░
-; animation-charging-6 = ▓▓▓▓▓▓▓░░░
-; animation-charging-7 = ▓▓▓▓▓▓▓▓░░
-; animation-charging-8 = ▓▓▓▓▓▓▓▓▓░
-; animation-charging-9 = ▓▓▓▓▓▓▓▓▓▓
+; animation-charging-0 = 
+; animation-charging-1 = 
+; animation-charging-2 = 
+animation-charging-0 = ░░░░░░░░░░
+animation-charging-1 = ▓░░░░░░░░░
+animation-charging-2 = ▓▓░░░░░░░░
+animation-charging-3 = ▓▓▓░░░░░░░
+animation-charging-4 = ▓▓▓▓▓░░░░░
+animation-charging-5 = ▓▓▓▓▓▓░░░░
+animation-charging-6 = ▓▓▓▓▓▓▓░░░
+animation-charging-7 = ▓▓▓▓▓▓▓▓░░
+animation-charging-8 = ▓▓▓▓▓▓▓▓▓░
+animation-charging-9 = ▓▓▓▓▓▓▓▓▓▓
 animation-charging-font = 3
 animation-charging-framerate = 400
 
