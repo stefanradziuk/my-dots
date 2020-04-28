@@ -257,7 +257,7 @@ gaps outer  0
 
 exec --no-startup-id i3-battery-popup -L 18 -N
 
-exec--no-startup-id python /home/stefan/bin/workspace_renumber.py
+# exec--no-startup-id python /home/stefan/bin/workspace_renumber.py
 
 exec_always --no-startup-id /home/stefan/.config/polybar/launch.sh
 
