@@ -421,7 +421,7 @@ format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.background}
 
 ; format-discharging = <ramp-capacity> <label-discharging>
-format-discharging =  <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = "%{F#87af87}%{F-} "

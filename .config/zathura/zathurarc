@@ -1,0 +1,43 @@
+set selection-clipboard clipboard
+
+set window-title-basename true
+set statusbar-home-tilde true
+set guioptions none
+
+set font "Fira Mono 11"
+
+set default-bg "#1c1c1c"
+set default-fg "#d0d0d0"
+
+set inputbar-bg "#1c1c1c"
+set inputbar-fg "#d0d0d0"
+
+set completion-bg "#1c1c1c"
+set completion-fg "#d0d0d0"
+
+set completion-group-bg "#1c1c1c"
+set completion-group-fg "#d0d0d0"
+
+set completion-highlight-bg "#ffafaf"
+set completion-highlight-fg "#1c1c1c"
+
+set highlight-color "#add4fb"
+set highlight-active-color "#ffafaf"
+
+set notification-bg "#1c1c1c"
+set notification-fg "#d0d0d0"
+
+set notification-error-bg "#ffafaf"
+set notification-error-fg "#1c1c1c"
+
+set notification-warning-bg "#ffafaf"
+set notification-warning-fg "#1c1c1c"
+
+set recolor-keephue "false"
+set recolor-darkcolor "#ffffff" # alt 1c1c1c
+set recolor-lightcolor "#1c1c1c"
+
+set render-loading-bg "#1c1c1c"
+set render-loading-fg "#d0d0d0"
+
+set zoom-max 2000
