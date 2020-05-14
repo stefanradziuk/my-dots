@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# todo emoji support? 🇵🇱🇬🇧
 
 current=$(setxkbmap -query | awk '{if ($1=="layout:") print $2}')
 
