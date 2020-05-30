@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-options="extend
+options="extend top
+extend right
 duplicate
 primary only
 secondary only"
 
-selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 4)
+selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 5)
 
 echo "This is your selection: $selection"
 
@@ -16,6 +17,10 @@ case "${selection}" in
         mons -s;;
     "duplicate")
         mons -d;;
-    "extend")
+    "extend right")
         mons -e right;;
+    "extend top")
+        mons -e top;;
 esac
+
+/home/stefan/bin/touch_mapper eDP1

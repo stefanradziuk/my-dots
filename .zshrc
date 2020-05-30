@@ -59,7 +59,7 @@ ZSH_THEME="mhFix"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(colored-man-pages command-not-found git gitignore z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,16 +77,19 @@ else
   export EDITOR='vim'
 fi
 
-export BROWSER='/usr/bin/google-chrome-beta'
+export BROWSER='firefox'
 # export BROWSER='/home/stefan/bin/google-chrome-beta'
-
-. /home/stefan/bin/z.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# C programming tools from Duncan
+export TOOLDIR=$HOME/c-tools
+export PATH="$TOOLDIR/bin:$TOOLDIR/bin/$ARCH:$PATH"
+export MANPATH=${MANPATH}:$TOOLDIR/man
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

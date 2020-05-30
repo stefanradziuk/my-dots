@@ -10,6 +10,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+set $HOME /home/stefan
+
 # left alt: Mod1
 # winkey:   Mod4
 set $mod Mod4
@@ -55,29 +57,29 @@ bindsym $mod+d exec --no-startup-id zsh -c "rofi -show run"
 
 # dmenu google search
 # idea from https://goo.gl/vL501N
-# bindsym $mod+g exec --no-startup-id /home/stefan/bin/dmenu_search
-bindsym $mod+g exec --no-startup-id /home/stefan/bin/rofi_search
+# bindsym $mod+g exec --no-startup-id $HOME/bin/dmenu_search
+bindsym $mod+g exec --no-startup-id $HOME/bin/rofi_search
 
 # rofi ssh picker
 bindsym $mod+Shift+g exec --no-startup-id rofi -show ssh -lines 4
 
 # rofi dual monitor picker
-bindsym $mod+m exec --no-startup-id /home/stefan/bin/rofi_mons
-bindsym $mod+Shift+m exec --no-startup-id /home/stefan/bin/rofi_dualmonitor_touch
+bindsym $mod+m exec --no-startup-id $HOME/bin/rofi_mons
+bindsym $mod+Shift+m exec --no-startup-id $HOME/bin/rofi_dualmonitor_touch
 
 # rofi setxkbmap picker
-bindsym $mod+n exec --no-startup-id /home/stefan/bin/rofi_kbmap
+bindsym $mod+n exec --no-startup-id $HOME/bin/rofi_kbmap
 
 # screenshot
-bindsym $mod+Shift+s exec --no-startup-id /home/stefan/bin/sscrot -c
+bindsym $mod+Shift+s exec --no-startup-id $HOME/bin/sscrot -c
 
 # lockscreen
-# bindsym Mod1+k exec --no-startup-id i3lock -ui /home/stefan/wallpapers/lock/stalenhag_lock.png
-set $Locker /home/stefan/bin/lockme
+# bindsym Mod1+k exec --no-startup-id i3lock -ui $HOME/wallpapers/lock/stalenhag_lock.png
+set $Locker $HOME/bin/lockme
 
 bindsym Mod1+k exec --no-startup-id $Locker
 
-bindsym Mod1+j exec /home/stefan/bin/rofi_powermenu
+bindsym Mod1+j exec $HOME/bin/rofi_powermenu
 
 # set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 # mode "$mode_system" {
@@ -172,6 +174,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+bindsym $mod+c exec --no-startup-id python $HOME/bin/cycle_workspace.py
+bindsym $mod+x exec --no-startup-id python $HOME/bin/renumber_once.py
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -257,9 +262,9 @@ gaps outer  0
 
 exec --no-startup-id i3-battery-popup -L 18 -N
 
-# exec--no-startup-id python /home/stefan/bin/workspace_renumber.py
+# exec--no-startup-id python $HOME/bin/workspace_renumber.py
 
-exec_always --no-startup-id /home/stefan/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # correct handling of floating dialogs
 for_window [window_role="pop-up"] floating enable

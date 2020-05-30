@@ -1,3 +1,4 @@
 #!/bin/bash
 
+mons -e top
 /home/stefan/bin/touch_mapper eDP1

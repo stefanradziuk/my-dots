@@ -12,6 +12,21 @@ Plug 'zxqfl/tabnine-vim'
 " Initialize plugin system
 call plug#end()
 
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 237
+let g:seoul256_background = 234
+colo seoul256
+
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ }
+
+" auto close tabnine preview windows
+autocmd CompleteDone * pclose
+
+" non-plugin settings
+
 syntax on
 set nocompatible
 filetype plugin indent on
@@ -26,21 +41,7 @@ set smartcase
 set laststatus=2
 set noshowmode
 
-" seoul256 (dark):
-"   Range:   233 (darkest) ~ 239 (lightest)
-"   Default: 237
-let g:seoul256_background = 234
-colo seoul256
-
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ }
-
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 :command Q q
 :command W w
-
-" xml formatting
-com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
-nnoremap = :FormatXML<Cr>

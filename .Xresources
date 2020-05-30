@@ -25,7 +25,7 @@ URxvt.lineSpace:		  0
 URxvt*letterSpace: 0
 
 ! Fonts
-! Fira Mono for Powerline, Roboto Mono for Powerline, Noto Mono for Powerline (no bold)
+! Fira Mono for Powerline, Roboto Mono for Powerline, Noto Mono for Powerline (no bold), Hack
 ! not installed - Iosevka
 
 URxvt.allow_bold:		true

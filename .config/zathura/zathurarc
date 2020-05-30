@@ -12,6 +12,9 @@ set default-fg "#d0d0d0"
 set inputbar-bg "#1c1c1c"
 set inputbar-fg "#d0d0d0"
 
+set statusbar-bg "#1c1c1c"
+set statusbar-fg "#d0d0d0"
+
 set completion-bg "#1c1c1c"
 set completion-fg "#d0d0d0"
 

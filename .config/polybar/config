@@ -17,7 +17,8 @@
 
 [colors]
 background = #1c1c1c
-background-alt = #4e4e4e
+background-alt = #626262
+background-alt-darker = #4e4e4e
 foreground = #d0d0d0
 foreground-alt = ${colors.foreground}
 primary = #5f865f
@@ -25,8 +26,8 @@ secondary = #85add4
 alert = #d68787
 
 [bar/bot]
-monitor = ${env:MONITOR:eDP1}
-monitor-fallback = ${env:MONITOR:HDMI2}
+monitor = eDP1
+monitor-fallback = HDMI2
 width = 100%
 height = 30
 ;offset-x = 1%
@@ -53,10 +54,10 @@ module-margin-right = 1
 
 font-0 = Fira Mono:style=Bold:pixelsize=13;1
 font-1 = DejaVuSansMono Nerd Font Mono:pixelsize=13;1
-font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-3 = siji:pixelsize=8;1
+font-2 = siji:pixelsize=8;1
+; font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 
-; filesystem mpd bspwm powermenu pulseaudio xbacklight xkeyboard
+; filesystem mpd bspwm powermenu pulseaudio xbacklight
 modules-left = i3
 modules-center =
 modules-right = pulseaudio battery wlan eth date
@@ -70,7 +71,7 @@ separator = |
 ;separator = %{F#d8af5f}|%{F-}
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -84,8 +85,8 @@ scroll-down = i3wm-wsprev
 ; cursor-scroll = arrow
 
 [bar/tablet_bot]
-monitor = ${env:MONITOR:eDP1}
-monitor-fallback = ${env:MONITOR:HDMI2}
+monitor = eDP1
+monitor-fallback = HDMI2
 width = 100%
 height = 30
 ;offset-x = 1%
@@ -112,8 +113,8 @@ module-margin-right = 1
 
 font-0 = Fira Mono:style=Bold:pixelsize=13;1
 font-1 = DejaVuSansMono Nerd Font Mono:pixelsize=13;1
-font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-3 = siji:pixelsize=8;1
+font-2 = siji:pixelsize=8;1
+; font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 ; filesystem mpd bspwm powermenu pulseaudio xbacklight
 modules-left = i3
@@ -129,7 +130,7 @@ separator = |
 ;separator = %{F#d8af5f}|%{F-}
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -225,8 +226,12 @@ label-unfocused = %index%
 label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
+; label-visible = %index%
+; label-visible-background = ${self.label-focused-background}
+; label-visible-underline = ${self.label-focused-underline}
+; label-visible-padding = ${self.label-focused-padding}
 label-visible = %index%
-label-visible-background = ${self.label-focused-background}
+label-visible-background = ${colors.background-alt-darker}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
