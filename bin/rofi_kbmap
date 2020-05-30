@@ -1,26 +1,38 @@
 #!/usr/bin/env bash
-# todo emoji support? 🇵🇱🇬🇧
+# the pritty-print representation of the locations
+GB="🇬🇧"
+PL="🇵🇱"
 
-current=$(setxkbmap -query | awk '{if ($1=="layout:") print $2}')
+OPTIONS="$GB (caps & alt gr switched)
+$PL (caps & alt gr switched)
+$GB
+$PL"
 
-echo "Your current keyboard map is: $current"
+declare -A PRETTY_TO_FILENAME=( [$GB \(caps & alt gr switched\)]="gb_personal" [$PL \(caps & alt gr switched\)]="pl_personal" [$GB]="gb" [$PL]="pl" )
+declare -A FILENAME_TO_PRETTY=( [gb_personal]="$GB (caps & alt gr switched)" [pl_personal]="$PL (caps & alt gr switched)" [gb]="$GB" [pl]="$PL" )
 
-options="gb_personal
-pl_personal
-gb
-pl"
+# get the current layout
+current_filename=$(setxkbmap -query | awk '{if ($1=="layout:") print $2}')
 
-selection=$(echo -e "${options}" | awk '{print $0=="'$current'" ? "> "$0 : $0}' | rofi -dmenu -p "keyboard layout" | awk '{print $NF}')
+# format the filename into a pretty-print format
+current_pretty=${FILENAME_TO_PRETTY[$current_filename]}
+echo "The current keyboard layout is: $current_pretty ($current_filename)"
 
-echo "This is your selection: $selection"
+# awk script to mark the current layout with '> '
+awk_formatter='{print $0=="'${current_pretty}'" ? "> "$0 : $0}'
 
-case "${selection}" in
-    "gb_personal")
-        setxkbmap -layout gb_personal -variant pl;;
-    "gb")
-        setxkbmap -layout gb -variant pl;;
-    "pl_personal")
-        setxkbmap -layout pl_personal;;
-    "pl")
-        setxkbmap -layout pl;;
-esac
+# get the user input through rofi
+selection_pretty=$(echo -n "$OPTIONS" | awk "$awk_formatter" | rofi -dmenu -p "keyboard layout")
+
+# get the corresponding filename from the map
+selection_filename="${PRETTY_TO_FILENAME[$selection_pretty]}"
+
+echo "You've selected: $selection_pretty ($selection_filename)"
+
+# if one of the gb maps was selected use the pl variant
+if [[ $selection_filename == "gb*" ]]; then
+  setxkbmap -layout "$selection_filename" -variant pl
+else
+  setxkbmap -layout "$selection_filename"
+fi
+
