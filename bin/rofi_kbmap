@@ -30,7 +30,7 @@ selection_filename="${PRETTY_TO_FILENAME[$selection_pretty]}"
 echo "You've selected: $selection_pretty ($selection_filename)"
 
 # if one of the gb maps was selected use the pl variant
-if [[ $selection_filename == "gb*" ]]; then
+if [[ $selection_filename == "gb"* ]]; then
   setxkbmap -layout "$selection_filename" -variant pl
 else
   setxkbmap -layout "$selection_filename"
