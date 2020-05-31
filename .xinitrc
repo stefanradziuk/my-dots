@@ -37,6 +37,11 @@ xbindkeys -f /home/stefan/.xbindkeysrc
 
 # feh --bg-max --randomize ~/wallpapers/stalenhag/*
 feh --bg-fill ~/pictures/wallpapers/jap/1.jpg &
+
+# making the cursor invisible after 10 s of inactivity
 unclutter --timeout 10 --ignore-scrolling &
+
+# automatic 'tablet mode' switching
+watch_tablet &
 
 exec i3

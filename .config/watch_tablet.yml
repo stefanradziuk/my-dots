@@ -1,0 +1,6 @@
+input_device: /dev/input/by-path/platform-thinkpad_acpi-event
+
+modes:
+  laptop:
+  tablet:
+    - /usr/bin/polyTablet
