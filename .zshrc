@@ -70,12 +70,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='subl3'
-else
-  export EDITOR='vim'
-fi
+export EDITOR='vim'
 
 export BROWSER='firefox'
 # export BROWSER='/home/stefan/bin/google-chrome-beta'
@@ -104,8 +99,9 @@ alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 8 | tr -
 alias sudo='sudo '
 # split into ~/bin/backlight_rel (relative) and backlight_abs (absolute)
 alias backlight_abs='sudo tee /sys/class/backlight/intel_backlight/brightness <<< '
-alias :e="vim"
+alias :e="vim -p"
 alias :q="exit"
+alias vim="vim -p"
 
 DEFAULT_USER="stefan"
 

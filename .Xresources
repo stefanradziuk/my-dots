@@ -14,11 +14,11 @@ URxvt.transparent:	  false
 URxvt.shading:			  20
 URxvt.fading:         0
 ! URxvt.urgentOnBell:		true
-! URxvt.visualBell:	  	true
+URxvt.visualBell:	  	false
 URxvt.loginShell:		  true
 URxvt.saveLines:		  1000
-URxvt.internalBorder:	8
-URxvt.lineSpace:		  0
+URxvt.internalBorder:	18
+URxvt.lineSpace:		  2
 
 
 ! Fix font space

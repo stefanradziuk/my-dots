@@ -234,8 +234,8 @@ default_border          pixel 0
 default_floating_border pixel 0
 smart_borders           on
 
-# smart_gaps  on
-gaps inner  0
+smart_gaps  on
+gaps inner  8
 gaps outer  0
 
 # i3-gaps-rounded-git (AUR)
