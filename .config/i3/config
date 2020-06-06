@@ -35,12 +35,12 @@ font pango:Fira Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # start a floating terminal
-for_window [class="URxvt" instance="floatingTerm"] floating enable
+for_window [instance="kitty" title="floating_term"] floating enable
 
-bindsym $mod+Shift+Return exec urxvt -name floatingTerm
+bindsym $mod+Shift+Return exec kitty --title=floating_term
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -235,11 +235,19 @@ default_floating_border pixel 0
 smart_borders           on
 
 smart_gaps  on
-gaps inner  8
+gaps inner  15
 gaps outer  0
 
 # i3-gaps-rounded-git (AUR)
 # border_radius 10
+
+bindsym $mod+z exec --no-startup-id $HOME/bin/rofi_gaps 
+
+# mode "$switch_gaps" {
+#   bindsym 1 mode "default", gaps inner  all set 15
+#   bindsym 2 mode "default", gaps inner  all set 0
+#   bindsym Escape mode "default"
+# }
 
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 # workspace colors: stroke bg font

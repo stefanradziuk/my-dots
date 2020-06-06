@@ -1,3 +1,4 @@
+" plugins {{{
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -28,32 +29,82 @@ colo seoul256
 " auto close tabnine preview windows
 autocmd CompleteDone * pclose
 
+" }}}
 
-" non-plugin settings
+" set* {{{
 
 syntax on
 set nocompatible
 filetype plugin indent on
+
 set mouse=a
 set ttymouse=sgr
+
 set whichwrap=b,s,<,>,[,]
+
 set number relativenumber
-" set colorcolumn=80
+"set colorcolumn=80
+"set cursorline
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+set wildmenu    " :command tab completions
+set lazyredraw
+set timeoutlen=1000 ttimeoutlen=0
+
 set ignorecase
 set smartcase
+set incsearch
 
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+" }}}
+
+" common typos {{{
 
 :command Q q
 :command W w
+:command Wq wq
+
+" }}}
+
+" theming {{{
 
 " override the LineNr bar bg
 highlight LineNr ctermbg=bg
 highlight LineNr ctermfg=244
 highlight NonText ctermfg=244
 highlight ModeMsg ctermfg=244
-"highlight ModeMsg ctermfg=101
+" highlight ModeMsg ctermfg=101
 
-" transparency
-highlight LineNr ctermbg=NONE
-highlight Normal ctermbg=NONE
+" disable inactive tab underline
+highlight TabLine cterm=none
+highlight TabLine ctermbg=bg
+highlight TabLine ctermfg=244
+
+highlight TabLineFill ctermbg=bg
+highlight TabLineFill ctermfg=bg
+
+highlight TabLineSel ctermbg=bg
+highlight TabLineSel ctermfg=244
+
+highlight Title ctermbg=bg
+highlight Title ctermfg=244
+
+highlight IncSearch ctermbg=bg
+highlight IncSearch ctermfg=fg
+
+highlight WildMenu ctermbg=fg
+highlight WildMenu ctermfg=bg
+
+highlight StatusLine ctermbg=fg
+highlight StatusLine ctermfg=236
+
+highlight StatusLineNC ctermbg=245
+highlight StatusLineNC ctermfg=236
+
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
+

@@ -71,7 +71,6 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 export EDITOR='vim'
-
 export BROWSER='firefox'
 # export BROWSER='/home/stefan/bin/google-chrome-beta'
 
@@ -97,11 +96,11 @@ export MANPATH=${MANPATH}:$TOOLDIR/man
 alias ls='ls --color=auto'
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 8 | tr -d '\n'; echo"
 alias sudo='sudo '
-# split into ~/bin/backlight_rel (relative) and backlight_abs (absolute)
-alias backlight_abs='sudo tee /sys/class/backlight/intel_backlight/brightness <<< '
-alias :e="vim -p"
 alias :q="exit"
+alias :e="vim -p"
 alias vim="vim -p"
+alias icat="kitty +kitten icat"
+alias gdiff="git difftool --no-symlinks --dir-diff"
 
 DEFAULT_USER="stefan"
 
@@ -110,3 +109,4 @@ bindkey "^[Od"	backward-word
 bindkey "^[Oc"	forward-word
 bindkey "^H"	backward-kill-word
 bindkey "^[[3^"	kill-word
+

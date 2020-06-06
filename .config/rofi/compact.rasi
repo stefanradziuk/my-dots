@@ -15,8 +15,9 @@
   background-color: #00000000;
   anchor: north;
   location: center;
-  font: "Fira Code Regular 15";
+  font: "Fira Mono Regular 15";
 }
+
 
 #window {
   transparency: "screenshot";
@@ -43,6 +44,7 @@
 
 // error box
 #textbox {
+  highlight: bold;
   border: 0;
   text-color: #d68787;
   padding: 0.5em;
