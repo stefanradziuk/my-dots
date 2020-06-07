@@ -492,7 +492,7 @@ animation-charging-9 = 
 animation-charging-10 = 
 
 animation-charging-font = 3
-animation-charging-framerate = 200
+animation-charging-framerate = 125
 
 ;animation-charging-0 = 
 ;animation-charging-1 = 
