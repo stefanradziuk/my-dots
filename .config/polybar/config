@@ -490,9 +490,18 @@ animation-charging-7 = 
 animation-charging-8 = 
 animation-charging-9 = 
 animation-charging-10 = 
+animation-charging-11 = 
+animation-charging-12 = 
+animation-charging-13 = 
+animation-charging-14 = 
+animation-charging-15 = 
+animation-charging-16 = 
+animation-charging-17 = 
+animation-charging-18 = 
+animation-charging-19 = 
 
 animation-charging-font = 3
-animation-charging-framerate = 125
+animation-charging-framerate = 110
 
 ;animation-charging-0 = 
 ;animation-charging-1 = 

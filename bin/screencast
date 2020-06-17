@@ -3,5 +3,5 @@
 slop=$(slop -f "%x %y %w %h %g %i") || exit 1
 read -r X Y W H G ID < <(echo $slop)
 date="$(date +%F-%H%M%S)"
-filename="/home/stefan/pictures/screencasts/${date}_screencast.webm"
+filename="/home/stefan/pictures/casts/${date}_screencast.webm"
 ffmpeg -framerate 25 -f x11grab -s "$W"x"$H" -i :0.0+$X,$Y "${filename}"

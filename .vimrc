@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'lervag/vimtex'
 Plug 'zxqfl/tabnine-vim'
+Plug 'Chiel92/vim-autoformat'
 "Plug 'glacambre/firenvim', { 'do' : { _->firenvim #install(0) } }
 
 " Initialize plugin system
@@ -92,7 +93,7 @@ highlight CursorLineNr ctermfg=244
 
 highlight NonText ctermfg=244
 highlight ModeMsg ctermfg=244
-highlight ModeMsg ctermfg=101
+" highlight ModeMsg ctermfg=101
 
 " disable inactive tab underline
 highlight TabLine cterm=none
@@ -128,6 +129,6 @@ highlight StatusLineNC ctermfg=bg
 
 " }}}
 
-": autocmd BufWritePost * !silent clang - format - i % : p
+au BufWrite *.c,*.h :Autoformat
 
 " vim:foldmethod=marker:foldlevel=0

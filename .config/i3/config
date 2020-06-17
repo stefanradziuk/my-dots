@@ -40,6 +40,9 @@ bindsym $mod+Return exec kitty
 # start a floating terminal
 for_window [instance="kitty" title="floating_term"] floating enable
 
+# floating c project
+for_window [title="WFC Simulation"] floating enable
+
 bindsym $mod+Shift+Return exec kitty --title=floating_term
 
 # kill focused window
@@ -235,7 +238,7 @@ default_floating_border pixel 0
 smart_borders           on
 
 smart_gaps  on
-gaps inner  15
+gaps inner  10
 gaps outer  0
 
 # i3-gaps-rounded-git (AUR)

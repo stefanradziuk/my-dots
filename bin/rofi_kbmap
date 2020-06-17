@@ -3,10 +3,7 @@
 GB="🇬🇧"
 PL="🇵🇱"
 
-OPTIONS="$GB (caps & alt gr switched)
-$PL (caps & alt gr switched)
-$GB
-$PL"
+OPTIONS="$GB (caps & alt gr switched)\n$PL (caps & alt gr switched)\n$GB\n$PL"
 
 declare -A PRETTY_TO_FILENAME=( [$GB \(caps & alt gr switched\)]="gb_personal" [$PL \(caps & alt gr switched\)]="pl_personal" [$GB]="gb" [$PL]="pl" )
 declare -A FILENAME_TO_PRETTY=( [gb_personal]="$GB (caps & alt gr switched)" [pl_personal]="$PL (caps & alt gr switched)" [gb]="$GB" [pl]="$PL" )
@@ -22,7 +19,7 @@ echo "The current keyboard layout is: $current_pretty ($current_filename)"
 awk_formatter='{print $0=="'${current_pretty}'" ? "> "$0 : $0}'
 
 # get the user input through rofi
-selection_pretty=$(echo -n "$OPTIONS" | awk "$awk_formatter" | rofi -dmenu -p "keyboard layout")
+selection_pretty=$(echo -en "$OPTIONS" | awk "$awk_formatter" | rofi -dmenu -p "keyboard layout")
 
 # get the corresponding filename from the map
 selection_filename="${PRETTY_TO_FILENAME[$selection_pretty]}"
