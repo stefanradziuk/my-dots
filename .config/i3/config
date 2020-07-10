@@ -42,6 +42,7 @@ for_window [instance="kitty" title="floating_term"] floating enable
 
 # floating c project
 for_window [title="WFC Simulation"] floating enable
+for_window [title="Osci"] floating enable
 
 bindsym $mod+Shift+Return exec kitty --title=floating_term
 
@@ -280,3 +281,4 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # correct handling of floating dialogs
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+

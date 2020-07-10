@@ -10,12 +10,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# set up z
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+export PATH=/home/stefan/bin:/home/stefan/.local/bin:$PATH
+
 export EDITOR='nvim'
-export BROWSER='firefox'
-# export BROWSER='/home/stefan/bin/google-chrome-beta'
+# export BROWSER='firefox'
+export BROWSER='google-chrome-beta'
+
+unsetopt correct
 
 alias l='ls -lah'
-alias ls='ls --color=auto'
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 8 | tr -d '\n'; echo"
 alias sudo='sudo '
 alias :q="exit"
@@ -32,4 +38,9 @@ bindkey "^[Od"	backward-word
 bindkey "^[Oc"	forward-word
 bindkey "^H"	backward-kill-word
 bindkey "^[[3^"	kill-word
+
+gi() {
+  touch .gitignore
+  curl "https://www.toptal.com/developers/gitignore/api/$1" >> .gitignore
+}
 

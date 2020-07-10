@@ -9,6 +9,7 @@ declare -A PRETTY_TO_FILENAME=( [$GB \(caps & alt gr switched\)]="gb_personal" [
 declare -A FILENAME_TO_PRETTY=( [gb_personal]="$GB (caps & alt gr switched)" [pl_personal]="$PL (caps & alt gr switched)" [gb]="$GB" [pl]="$PL" )
 
 # get the current layout
+# sometimes setxkbmap does not return the layout (returns only rules and model)
 current_filename=$(setxkbmap -query | awk '{if ($1=="layout:") print $2}')
 
 # format the filename into a pretty-print format
