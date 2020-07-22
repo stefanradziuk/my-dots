@@ -1,0 +1,26 @@
+#!/bin/bash
+
+BROWSER=google-chrome-beta
+
+DEFAULT_ELVI="google"
+
+# rofi_surfraw_elvis contains the output of $(sr -elvi | awk '{ if (NR != 1) print $1 }')
+elvi_list=$(cat ~/bin/rofi_surfraw_elvis)
+input=$(echo -e "$elvi_list" | rofi -dmenu -p 'sr')
+chosen_elvi=$(echo "$input" | awk '{ print $1 }')
+query=$(echo "$input" | awk '{ $1=""; print $0 }')
+
+if [ -n "$input" ]; then
+
+  if ! echo -e "$elvi_list" | grep -Fwi "$chosen_elvi"; then
+    # use the default elvi
+    surfraw -browser="$BROWSER" "$DEFAULT_ELVI" "$input"
+  else
+    # use the user given elvi
+    surfraw -browser="$BROWSER" "$chosen_elvi" $query
+  fi
+
+  # try to focus the browser window
+  exec i3-msg [class="^$BROWSER$"] focus
+
+fi

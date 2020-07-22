@@ -411,32 +411,6 @@ label-volume-foreground = ${root.foreground}
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = 奄 muted
 
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.foreground}
-bar-volume-foreground-1 = ${colors.foreground}
-bar-volume-foreground-2 = ${colors.foreground}
-bar-volume-foreground-3 = ${colors.foreground}
-bar-volume-foreground-4 = ${colors.foreground}
-bar-volume-foreground-5 = ${colors.foreground}
-bar-volume-foreground-6 = ${colors.foreground}
-bar-volume-gradient = false
-bar-volume-indicator = ▒
-bar-volume-indicator-foreground = #fff
-bar-volume-indicator-font = 3
-bar-volume-fill = ▓
-bar-volume-fill-font = 3
-bar-volume-fill-foreground = ${colors.foreground}
-bar-volume-empty = ░
-bar-volume-empty-font = 3
-bar-volume-empty-foreground = ${colors.foreground}
-
-; bar-volume-indicator = |
-; bar-volume-indicator-font = 0
-; bar-volume-fill = ─
-; bar-volume-fill-font = 1
-; bar-volume-empty = ─
-; bar-volume-empty-font = 1
-
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -464,15 +438,6 @@ ramp-capacity-8 = 
 ramp-capacity-9 = 
 ramp-capacity-10 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
-
-;bar-capacity-width = 10
-;bar-capacity-indicator = ▒
-;bar-capacity-indicator-foreground = #fff
-;bar-capacity-indicator-font = 3
-;bar-capacity-fill = ▓
-;bar-capacity-fill-font = 3
-;bar-capacity-empty = ░
-;bar-capacity-empty-font = 3
 
 ; charging
 
@@ -502,21 +467,6 @@ animation-charging-19 = 
 
 animation-charging-font = 3
 animation-charging-framerate = 110
-
-;animation-charging-0 = 
-;animation-charging-1 = 
-;animation-charging-2 = 
-
-;animation-charging-0 = ░░░░░░░░░░
-;animation-charging-1 = ▓░░░░░░░░░
-;animation-charging-2 = ▓▓░░░░░░░░
-;animation-charging-3 = ▓▓▓░░░░░░░
-;animation-charging-4 = ▓▓▓▓▓░░░░░
-;animation-charging-5 = ▓▓▓▓▓▓░░░░
-;animation-charging-6 = ▓▓▓▓▓▓▓░░░
-;animation-charging-7 = ▓▓▓▓▓▓▓▓░░
-;animation-charging-8 = ▓▓▓▓▓▓▓▓▓░
-;animation-charging-9 = ▓▓▓▓▓▓▓▓▓▓
 
 [module/temperature]
 type = internal/temperature

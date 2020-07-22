@@ -61,8 +61,7 @@ bindsym $mod+d exec --no-startup-id zsh -c "rofi -show run"
 
 # dmenu google search
 # idea from https://goo.gl/vL501N
-# bindsym $mod+g exec --no-startup-id $HOME/bin/dmenu_search
-bindsym $mod+g exec --no-startup-id $HOME/bin/rofi_search
+bindsym $mod+g exec --no-startup-id $HOME/bin/rofi_surfraw
 
 # rofi ssh picker
 bindsym $mod+Shift+g exec --no-startup-id rofi -show ssh -lines 4

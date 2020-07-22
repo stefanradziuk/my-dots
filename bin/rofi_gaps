@@ -1,0 +1,5 @@
+#!/bin/bash
+
+OPTIONS="0\n5\n10\n15\n20"
+
+i3-msg "gaps inner all set ""$(echo -e $OPTIONS | rofi -dmenu -p 'gaps')"

@@ -1,6 +1,6 @@
 {
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["scala", "c", "cc", "cpp", "c++"],
+  "coc.preferences.formatOnSaveFiletypes": ["scala", "c", "cc", "cpp", "c++", "py", "sh"],
   "metals.javaHome": "/usr/lib/jvm/java-11-openjdk/",
   "metals.sbtScript": "/usr/bin/sbt",
   "languageserver": {

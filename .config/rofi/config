@@ -2,3 +2,4 @@ rofi.theme:		    	  compact
 rofi.modi:            run,window,drun,ssh
 rofi.lines:           10
 rofi.fixed-num-lines: false
+rofi.terminal:        kitty

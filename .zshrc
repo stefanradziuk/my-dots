@@ -13,10 +13,9 @@ fi
 # set up z
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-export PATH=/home/stefan/bin:/home/stefan/.local/bin:$PATH
+export PATH=/home/stefan/.local/bin:$PATH
 
 export EDITOR='nvim'
-# export BROWSER='firefox'
 export BROWSER='google-chrome-beta'
 
 unsetopt correct
@@ -42,5 +41,11 @@ bindkey "^[[3^"	kill-word
 gi() {
   touch .gitignore
   curl "https://www.toptal.com/developers/gitignore/api/$1" >> .gitignore
+}
+
+mailman_sync() {
+  echo "docsoc's password: "
+  read -sr
+  echo "$REPLY" | ssh docsoc 'mailmansub/run.sh'
 }
 
