@@ -1,4 +1,6 @@
 #!/bin/bash
 
+# restart i3 to put polybar back on the laptop display
+i3-msg restart
 mons -e top
 /home/stefan/bin/touch_mapper eDP1

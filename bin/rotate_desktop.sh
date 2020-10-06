@@ -51,8 +51,8 @@ function do_rotate
   esac
 }
 
-XDISPLAY=`xrandr --current | grep primary | sed -e 's/ .*//g'`
-XROT=`xrandr --current --verbose | grep primary | egrep -o ' (normal|left|inverted|right) '`
+XDISPLAY=`xrandr --current | grep primary | sed --expression='s/ .*//g'`
+XROT=`xrandr --current --verbose | grep primary | egrep --only-matching ' (normal|left|inverted|right) '`
 
 do_rotate $XDISPLAY $1
 

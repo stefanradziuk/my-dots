@@ -4,11 +4,11 @@
 while getopts ":c" opt; do
   case $opt in
     c )
-      scrot -a $(slop -f '%x,%y,%w,%h') -e 'xclip -t image/png -selection clipboard $f ; rm $f' ; exit 0 ;;
+      scrot --autoselect $(slop --format='%x,%y,%w,%h') --exec 'xclip -target image/png -selection clipboard $f ; rm $f' ; exit 0 ;;
     \? ) echo "Unknown option" ;;
   esac
 done
 
-scrot -a $(slop -f '%x,%y,%w,%h') -e 'mv $f ~/pictures/screenshots/ ; xclip -t image/png -selection clipboard "/home/stefan/pictures/screenshots/$f"'
+scrot --autoselect $(slop --format='%x,%y,%w,%h') --exec 'mv $f ~/pictures/screenshots/ ; xclip -target image/png -selection clipboard "/home/stefan/pictures/screenshots/$f"'
 
 

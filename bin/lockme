@@ -1,17 +1,28 @@
 #!/usr/bin/env bash
+# TODO use flags
 
+# just lock with a static image
+# i3lock --ignore-empty-password --no-unlock-indicator --image=/home/stefan/pictures/wallpapers/thonk.png
+
+TMPBG='/tmp/screen.png'
 # icon="/home/pathtoicon.png"
-tmpbg='/tmp/screen.png'
 
 (( $# )) && { icon=$1; }
 
-scrot "$tmpbg"
-# pixelate
-convert "$tmpbg" -scale 10% -scale 1000% "$tmpbg"
-# blur
-# convert "$tmpbg" -blur 10x5 "$tmpbg"
-# add icon
-# convert "$tmpbg" "$icon" -gravity center -composite -matte "$tmpbg"
-i3lock -e -u -i "$tmpbg"
-rm "$tmpbg"
-# i3lock -e -u -i /home/stefan/wallpapers/lock/stalenhag_lock.png
+# take a screenshot
+scrot "$TMPBG"
+
+# # pixelate it
+# convert "$TMPBG" -scale 10% -scale 1000% "$TMPBG"
+
+# blur it
+convert "$TMPBG" -blur 10x5 "$TMPBG"
+
+# add an icon
+# convert "$TMPBG" "$icon" -gravity center -composite -matte "$TMPBG"
+
+# lock the screen
+i3lock --ignore-empty-password --no-unlock-indicator --image="$TMPBG"
+
+# remove the tmp file
+rm "$TMPBG"

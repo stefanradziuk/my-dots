@@ -45,3 +45,6 @@ unclutter --timeout 10 --ignore-scrolling &
 watch_tablet &
 
 exec i3
+# while :; do
+#   dwm
+# done

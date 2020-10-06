@@ -14,7 +14,7 @@ if [ -n "$input" ]; then
 
   if ! echo -e "$elvi_list" | grep -Fwi "$chosen_elvi"; then
     # use the default elvi
-    surfraw -browser="$BROWSER" "$DEFAULT_ELVI" "$input"
+    surfraw -browser="$BROWSER" "$DEFAULT_ELVI" $input
   else
     # use the user given elvi
     surfraw -browser="$BROWSER" "$chosen_elvi" $query

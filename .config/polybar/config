@@ -96,6 +96,7 @@ tray-scale = 1.0
 separator = %{F#87afaf}|%{F-}
 ;separator = %{F#949494}|%{F-}
 
+# has to be true whe using hideIt.sh
 override-redirect = false
 ;wm-restack = i3
 
@@ -373,7 +374,9 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+; leaving sink empty to get auto detect
+; sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+sink =
 
 format-volume = <label-volume>
 label-volume = 奄 %percentage%%

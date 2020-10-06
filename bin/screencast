@@ -1,6 +1,6 @@
 #!/bin/bash
 
-slop=$(slop -f "%x %y %w %h %g %i") || exit 1
+slop=$(slop --format='%x %y %w %h %g %i') || exit 1
 read -r X Y W H G ID < <(echo $slop)
 date="$(date +%F-%H%M%S)"
 filename="/home/stefan/pictures/casts/${date}_screencast.webm"

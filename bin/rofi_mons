@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 options="extend top
+left vertical
 extend right
 duplicate
 primary only
@@ -11,16 +12,18 @@ selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 5)
 echo "This is your selection: $selection"
 
 case "${selection}" in
-    "primary only")
-        mons -o;;
-    "secondary only")
-        mons -s;;
-    "duplicate")
-        mons -d;;
-    "extend right")
-        mons -e right;;
-    "extend top")
-        mons -e top;;
+  "primary only")
+    mons -o;;
+  "secondary only")
+    mons -s;;
+  "duplicate")
+    mons -d;;
+  "extend right")
+    mons -e right;;
+  "extend top")
+    mons -e top;;
+  "left vertical")
+    xrandr --output HDMI2 --auto --pos 0x0 --rotate left --output eDP1 --auto --pos 1080x840 --primary;;
 esac
 
 /home/stefan/bin/touch_mapper eDP1

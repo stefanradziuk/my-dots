@@ -71,7 +71,10 @@ bindsym $mod+m exec --no-startup-id $HOME/bin/rofi_mons
 bindsym $mod+Shift+m exec --no-startup-id $HOME/bin/rofi_dualmonitor_touch
 
 # rofi setxkbmap picker
-bindsym $mod+n exec --no-startup-id $HOME/bin/rofi_kbmap
+bindsym $mod+Shitf+n exec --no-startup-id $HOME/bin/rofi_kbmap
+
+# rofi emoji picker
+bindsym $mod+n exec --no-startup-id rofimoji
 
 # screenshot
 bindsym $mod+Shift+s exec --no-startup-id $HOME/bin/sscrot -c
@@ -217,6 +220,17 @@ mode "resize" {
 		bindsym Ctrl+Up resize shrink height 1 px or 1 ppt
 		bindsym Ctrl+Right resize grow width 1 px or 1 ppt
 
+		# coarse resizing
+		bindsym Shift+h resize shrink width 100 px or 100 ppt
+		bindsym Shift+j resize grow height 100 px or 100 ppt
+		bindsym Shift+k resize shrink height 100 px or 100 ppt
+		bindsym Shift+l resize grow width 100 px or 100 ppt
+
+		bindsym Shift+Left resize shrink width 100 px or 100 ppt
+		bindsym Shift+Down resize grow height 100 px or 100 ppt
+		bindsym Shift+Up resize shrink height 100 px or 100 ppt
+		bindsym Shift+Right resize grow width 100 px or 100 ppt
+
 		# back to normal: Enter or Escape
 		bindsym Return mode "default"
 		bindsym Escape mode "default"
@@ -244,7 +258,7 @@ gaps outer  0
 # i3-gaps-rounded-git (AUR)
 # border_radius 10
 
-bindsym $mod+z exec --no-startup-id $HOME/bin/rofi_gaps 
+bindsym $mod+z exec --no-startup-id $HOME/bin/rofi_gaps
 
 # mode "$switch_gaps" {
 #   bindsym 1 mode "default", gaps inner  all set 15
@@ -276,6 +290,7 @@ exec --no-startup-id i3-battery-popup -L 18 -N
 # exec--no-startup-id python $HOME/bin/workspace_renumber.py
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec --no-startup-id hideIt.sh -N 'polybar' -d bottom --region 0x1080+1920+-10 -p 0 -i 1 -w
 
 # correct handling of floating dialogs
 for_window [window_role="pop-up"] floating enable

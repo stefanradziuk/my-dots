@@ -16,6 +16,7 @@
   anchor: north;
   location: center;
   font: "Fira Mono Regular 15";
+  highlight: bold;
 }
 
 
@@ -44,7 +45,6 @@
 
 // error box
 #textbox {
-  highlight: bold;
   border: 0;
   text-color: #d68787;
   padding: 0.5em;
@@ -63,7 +63,6 @@
 #element {
   border: 0px;
   padding: 0.25em 0.5em;
-  highlight: bold;
 }
 
 #element normal.normal {

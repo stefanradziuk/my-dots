@@ -10,13 +10,13 @@ ON="$green$bold ON $normal$reset"
 OFF="$red$bold OFF $normal$reset"
 
 if (ping -W 2 -c 1 192.168.0.1 &>/dev/null) then
-    echo -e "LAN:\t$ON"
-else 
-    echo -e "LAN:\t$OFF"
+  echo -e "LAN:\t$ON"
+else
+  echo -e "LAN:\t$OFF"
 fi
 
 if (ping -W 2 -c 1 www.wikipedia.org &>/dev/null) then
-    echo -e "DNS:\t$ON"
+  echo -e "DNS:\t$ON"
 else
-    echo -e "DNS:\t$OFF"
+  echo -e "DNS:\t$OFF"
 fi

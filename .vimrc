@@ -176,6 +176,8 @@ endif
 set whichwrap=b,s,<,>,[,]
 
 " ui
+" highlight trailing whitespace
+set list lcs=trail:~,extends:@,precedes:@,tab:\·\ 
 set display=lastline "@@@ on wrap
 set number relativenumber
 "set colorcolumn=80
@@ -255,5 +257,24 @@ highlight StatusLineNC ctermfg=bg
 "highlight Visual ctermfg=bg
 
 " }}}
+
+" markdown {{{
+
+" markdown to html compilation
+" :command MdCompile !filename=% ; filename=${filename:0:-3} ; markdown -\o "$filename.html" %
+:command MdCompile !pandoc -s -f markdown --katex -t html -o '%:r.html' --metadata title='%:t:r' %
+
+" compile markdown on save
+" autocmd BufWrite *.md :silent MdCompile
+
+" enable and set spellcheck to polish without capitalisation rules
+autocmd FileType markdown set spell | set spelllang=pl | set spellcapcheck=
+
+" don't highlight katex underscores
+autocmd FileType markdown syn match MarkdownIgnore "\$.*_.*\$"
+
+" }}}
+
+:command Mailgen !cd /home/stefan/documents/docsoc/mailgen/ && ./mailgen.js %:p
 
 " vim:foldmethod=marker:foldlevel=0

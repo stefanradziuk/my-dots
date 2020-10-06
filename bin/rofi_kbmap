@@ -25,7 +25,7 @@ selection_pretty=$(echo -en "$OPTIONS" | awk "$awk_formatter" | rofi -dmenu -p "
 # get the corresponding filename from the map
 selection_filename="${PRETTY_TO_FILENAME[$selection_pretty]}"
 
-echo "You've selected: $selection_pretty ($selection_filename)"
+# echo "You've selected: $selection_pretty ($selection_filename)"
 
 # if one of the gb maps was selected use the pl variant
 if [[ $selection_filename == "gb"* ]]; then
