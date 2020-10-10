@@ -13,10 +13,11 @@ fi
 # set up z
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-export PATH=/home/stefan/.local/bin:$PATH
-
 export EDITOR='nvim'
 export BROWSER='google-chrome-beta'
+
+# pintos_path
+export PATH="/home/stefan/programming/pintos_task0_sar119/src/utils:$PATH"
 
 unsetopt correct
 
@@ -49,3 +50,8 @@ mailman_sync() {
   echo "$REPLY" | ssh docsoc 'mailmansub/run.sh'
 }
 
+docclone() {
+  DOC_SHORTCODE='sar119'
+  LAB_DEPLOYER='lab2021_autumn'
+  git clone "git@gitlab.doc.ic.ac.uk:$LAB_DEPLOYER/$1_$DOC_SHORTCODE.git"
+}

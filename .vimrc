@@ -6,10 +6,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'Chiel92/vim-autoformat' (currently using coc instead)
+" Plug 'RRethy/vim-hexokinase' " (css colors)
 
 " Initialize plugin system
 call plug#end()
+
+" vimtex
+let g:tex_flavor = 'latex'
 
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+GREEN="\x1b[32m"
+RED="\x1b[31m"
+RESET="\x1b[m"
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
+HEADSET="00:0A:45:0C:35:5C"
+CONTROLLER="40:A3:CC:C5:DA:2C"
+
+if [[ $(bluetoothctl list) == *Controller* ]]; then
+  echo -e "Bluetooth hw: $GREEN$BOLD on $RESET$NORMAL"
+else
+  echo -e "Bluetooth hw: $RED$BOLD off $RESET$NORMAL"
+fi
+
+POWERED_ON=$(bluetoothctl show "$CONTROLLER" | awk '{ if ($1=="Powered:") { print $2 } }')
+if [[ "$POWERED_ON" == yes ]]; then
+  echo -e "Bluetooth sw: $GREEN$BOLD on $RESET$NORMAL"
+else
+  echo -e "Bluetooth sw: $RED$BOLD off $RESET$NORMAL"
+fi
+
+# yes/no
+CONNECTED=$(bluetoothctl info "$HEADSET" | awk '{ if ($1=="Connected:") { print $2 } }')
+if [[ "$CONNECTED" == yes ]]; then
+  echo -e "ATH:          $GREEN$BOLD connected $RESET$NORMAL"
+else
+  echo -e "ATH:          $RED$BOLD disconnected $RESET$NORMAL"
+fi

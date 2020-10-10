@@ -1,0 +1,58 @@
+#!/bin/bash
+
+if [[ "$#" -ne 1 ]]; then
+  echo "usage: blue_ath_bar -[st]"
+  exit 1
+fi
+
+HEADSET="00:0A:45:0C:35:5C"
+CONTROLLER="40:A3:CC:C5:DA:2C"
+
+echo_status() {
+  CONNECTED=$(bluetoothctl info "$HEADSET" | awk '{ if ($1=="Connected:") { print $2 } }')
+  if [[ "$CONNECTED" == yes ]]; then
+    # "ATH connected"
+    # echo '%{F#85add4}%{F-}'
+    echo '%{F#87afaf}%{F-}'
+  elif [[ $(bluetoothctl show "$CONTROLLER" | awk '{ if ($1=="Powered:") { print $2 } }') == yes ]]; then
+    # "Bluetooth sw controller on"
+    echo ""
+  elif [[ $(bluetoothctl list) == *Controller* ]]; then
+    # "Bluetooth hw on"
+    echo '%{F#626262}%{F-}'
+  else
+    # "Bluetooth hw off"
+    echo ''
+  fi
+}
+
+toggle() {
+  CONNECTED=$(bluetoothctl info "$HEADSET" | awk '{ if ($1=="Connected:") { print $2 } }')
+  if [[ "$CONNECTED" == yes ]]; then
+    bluetoothctl power off
+  elif [[ $(bluetoothctl show "$CONTROLLER" | awk '{ if ($1=="Powered:") { print $2 } }') == yes ]]; then
+    bluetoothctl connect "$HEADSET"
+  else
+    bluetoothctl power on && bluetoothctl connect "$HEADSET"
+  fi
+}
+
+while getopts ":st" opt; do
+  case $opt in
+    s)
+      echo_status
+      exit 0
+      ;;
+    t)
+      toggle
+      exit 0
+      ;;
+    /?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+
+echo "usage: blue_ath_bar -[st]"
+exit 1

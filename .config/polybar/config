@@ -58,7 +58,7 @@ font-2 = siji:pixelsize=8;1
 
 modules-left = i3
 modules-center =
-modules-right = pulseaudio battery wlan eth date
+modules-right = bluetooth pulseaudio battery wlan eth date
 
 ; Tray settings
 
@@ -145,7 +145,7 @@ font-2 = ${bar/bot.font-2}
 
 modules-left = ${bar/bot.modules-left}
 modules-center =
-modules-right = tablet pulseaudio battery wlan eth date
+modules-right = tablet bluetooth pulseaudio battery wlan eth date
 
 tray-position = ${bar/bot.tray-position}
 tray-padding = ${bar/bot.tray-padding}
@@ -502,4 +502,10 @@ type = custom/text
 content = 
 ; 
 click-left = /home/stefan/bin/rofi_tablet
+
+[module/bluetooth]
+type = custom/script
+exec = /home/stefan/bin/blue_ath_bar -s
+interval = 2
+click-left = /home/stefan/bin/blue_ath_bar -t
 

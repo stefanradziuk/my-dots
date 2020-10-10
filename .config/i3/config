@@ -71,7 +71,7 @@ bindsym $mod+m exec --no-startup-id $HOME/bin/rofi_mons
 bindsym $mod+Shift+m exec --no-startup-id $HOME/bin/rofi_dualmonitor_touch
 
 # rofi setxkbmap picker
-bindsym $mod+Shitf+n exec --no-startup-id $HOME/bin/rofi_kbmap
+bindsym $mod+Shift+n exec --no-startup-id $HOME/bin/rofi_kbmap
 
 # rofi emoji picker
 bindsym $mod+n exec --no-startup-id rofimoji
@@ -291,6 +291,9 @@ exec --no-startup-id i3-battery-popup -L 18 -N
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec --no-startup-id hideIt.sh -N 'polybar' -d bottom --region 0x1080+1920+-10 -p 0 -i 1 -w
+
+# restart polybar
+bindsym $mod+Shift+b exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 # correct handling of floating dialogs
 for_window [window_role="pop-up"] floating enable

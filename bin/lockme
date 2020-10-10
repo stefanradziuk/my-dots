@@ -6,8 +6,9 @@
 
 TMPBG='/tmp/screen.png'
 # icon="/home/pathtoicon.png"
+# (( $# )) && { icon=$1; }
 
-(( $# )) && { icon=$1; }
+SCALE_FACTOR=5
 
 # take a screenshot
 scrot "$TMPBG"
@@ -16,7 +17,10 @@ scrot "$TMPBG"
 # convert "$TMPBG" -scale 10% -scale 1000% "$TMPBG"
 
 # blur it
-convert "$TMPBG" -blur 10x5 "$TMPBG"
+# convert "$TMPBG" -blur 10x5 "$TMPBG"
+
+# much faster, less precise way of bluring
+convert "$TMPBG" -scale "$(( 100 / SCALE_FACTOR))%" -blur 0x1.25 -resize "$(( 100 * SCALE_FACTOR))%" "$TMPBG"
 
 # add an icon
 # convert "$TMPBG" "$icon" -gravity center -composite -matte "$TMPBG"
