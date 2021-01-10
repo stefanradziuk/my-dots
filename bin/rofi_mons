@@ -7,7 +7,7 @@ duplicate
 primary only
 secondary only"
 
-selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 5)
+selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 6)
 
 echo "This is your selection: $selection"
 

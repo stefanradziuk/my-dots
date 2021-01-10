@@ -6,6 +6,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
+" Plug 'zxqfl/tabnine-vim'
 " Plug 'RRethy/vim-hexokinase' " (css colors)
 
 " Initialize plugin system
@@ -13,12 +15,18 @@ call plug#end()
 
 " vimtex
 let g:tex_flavor = 'latex'
+let g:vimtex_quickfix_open_on_warning = 0
 
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
 let g:seoul256_background=234
 colo seoul256
+
+let g:gitgutter_sign_added    = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed  = '-'
+let g:gitgutter_sign_modified_removed = '~-'
 
 " {{{ coc
 
@@ -75,6 +83,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
+" show usage
 nmap <silent> gr <Plug>(coc-references)
 
 " Used to expand decorations in worksheets
@@ -94,7 +103,7 @@ endfunction
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Remap for rename current word
+" Remap for rename (refactor) current word
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
@@ -204,6 +213,9 @@ set smartcase
 set incsearch
 set nohlsearch
 
+" leader y copies selection into "c and puts in system clipboard
+vnoremap <silent><Leader>y "cy <Bar> :call system('xclip -selection clipboard', @c)<CR>
+
 " }}}
 
 " common typos {{{
@@ -217,44 +229,36 @@ set nohlsearch
 
 " theming {{{
 
+" signcolumn?
 " override the LineNr bar bg
-highlight LineNr ctermbg=bg
-highlight LineNr ctermfg=244
-highlight CursorLineNr ctermbg=bg
-highlight CursorLineNr ctermfg=244
+highlight LineNr          ctermfg=244   ctermbg=bg
+highlight CursorLineNr    ctermfg=244   ctermbg=bg
 
-highlight NonText ctermfg=244
-highlight ModeMsg ctermfg=244
-" highlight ModeMsg ctermfg=101
+highlight GitGutterAdd    ctermfg=2     ctermbg=bg
+highlight GitGutterDelete ctermfg=1     ctermbg=bg
+highlight GitGutterChange ctermfg=3     ctermbg=bg
+highlight! link GitGutterChangeDelete GitGutterDelete
+
+highlight NonText         ctermfg=244
+highlight ModeMsg         ctermfg=244
+" highlight ModeMsg        ctermfg=101
 
 " disable inactive tab underline
-highlight TabLine cterm=none
-highlight TabLine ctermbg=bg
-highlight TabLine ctermfg=244
-highlight TabLineSel ctermbg=bg
-highlight TabLineSel ctermfg=fg
-highlight TabLineFill ctermbg=bg
-highlight TabLineFill ctermfg=bg
-highlight Title ctermbg=bg
-highlight Title ctermfg=244
+highlight TabLine         cterm=none    ctermfg=244 ctermbg=bg
+highlight TabLineSel      ctermfg=fg    ctermbg=bg
+highlight TabLineFill     ctermfg=bg    ctermbg=bg
+highlight Title           ctermfg=244   ctermbg=bg
 
-highlight Search cterm=none
-highlight Search ctermbg=fg
-highlight Search ctermfg=bg
-highlight IncSearch cterm=reverse
-highlight IncSearch ctermbg=bg
-highlight IncSearch ctermfg=fg
+highlight Search          cterm=none    ctermbg=fg  ctermfg=bg
+highlight IncSearch       cterm=reverse ctermbg=bg  ctermfg=fg
 
-highlight WildMenu ctermbg=fg
-highlight WildMenu ctermfg=bg
+highlight WildMenu        ctermfg=bg    ctermbg=fg
 
-highlight StatusLine ctermbg=fg
-highlight StatusLine ctermfg=bg
-"highlight StatusLine ctermbg=fg
-"highlight StatusLine ctermfg=236
-highlight StatusLineNC ctermbg=245
-highlight StatusLineNC ctermfg=bg
-"highlight StatusLineNC ctermfg=236
+highlight StatusLine      ctermfg=bg    ctermbg=fg
+"highlight StatusLine      ctermbg=fg
+"highlight StatusLine      ctermfg=236
+highlight StatusLineNC    ctermfg=bg    ctermbg=245
+"highlight StatusLineNC    ctermfg=236
 
 "highlight Visual ctermbg=13
 "highlight Visual ctermfg=bg

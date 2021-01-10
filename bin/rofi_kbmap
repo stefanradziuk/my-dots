@@ -3,10 +3,10 @@
 GB="🇬🇧"
 PL="🇵🇱"
 
-OPTIONS="$GB (caps & alt gr switched)\n$PL (caps & alt gr switched)\n$GB\n$PL"
+OPTIONS="$GB/$PL device specific\n$GB (caps & alt gr switched)\n$PL (caps & alt gr switched)\n$GB\n$PL"
 
-declare -A PRETTY_TO_FILENAME=( [$GB \(caps & alt gr switched\)]="gb_personal" [$PL \(caps & alt gr switched\)]="pl_personal" [$GB]="gb" [$PL]="pl" )
-declare -A FILENAME_TO_PRETTY=( [gb_personal]="$GB (caps & alt gr switched)" [pl_personal]="$PL (caps & alt gr switched)" [gb]="$GB" [pl]="$PL" )
+declare -A PRETTY_TO_FILENAME=( [$GB/$PL device specific]="gb_pl" [$GB \(caps & alt gr switched\)]="gb_personal" [$PL \(caps & alt gr switched\)]="pl_personal" [$GB]="gb" [$PL]="pl" )
+declare -A FILENAME_TO_PRETTY=( [gb_pl]="$GB/$PL device specific" [gb_personal]="$GB (caps & alt gr switched)" [pl_personal]="$PL (caps & alt gr switched)" [gb]="$GB" [pl]="$PL" )
 
 # get the current layout
 # sometimes setxkbmap does not return the layout (returns only rules and model)
@@ -27,8 +27,10 @@ selection_filename="${PRETTY_TO_FILENAME[$selection_pretty]}"
 
 # echo "You've selected: $selection_pretty ($selection_filename)"
 
-# if one of the gb maps was selected use the pl variant
-if [[ $selection_filename == "gb"* ]]; then
+if [[ $selection_filename == "gb_pl" ]]; then
+  /home/stefan/bin/multi_kbd
+elif [[ $selection_filename == "gb"* ]]; then
+  # if one of the gb maps was selected use the pl variant
   setxkbmap -layout "$selection_filename" -variant pl
 else
   setxkbmap -layout "$selection_filename"

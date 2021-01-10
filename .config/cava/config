@@ -5,7 +5,7 @@
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'.
 ; mode = normal
- 
+
 # Accepts only non-negative values.
 ; framerate = 60
 
@@ -44,7 +44,7 @@
 #
 # For pulseaudio 'source' will be the source. Default: 'auto', which uses the monitor source of the default sink
 # (all pulseaudio sinks(outputs) have 'monitor' sources(inputs) associated with them).
-# 
+#
 # For alsa 'source' will be the capture device.
 # For fifo 'source' will be the path to fifo-file.
 method = pulse
@@ -101,16 +101,15 @@ foreground = '#ffafaf'
 # Gradient mode, only hex defined colors are supported, background must also be defined in hex
 # or remain commented out. 1 = on, 0 = off. Warning: for certain terminal emulators cava will
 # not able to restore color definitions on exit, simply restart your terminal to restore colors.
-gradient = 0
-
-# orangish gradient
-# gradient_color_1 = '#b06a58'
-# gradient_color_2 = '#e5c078'
+gradient = 1
 
 # steel blueish gradient
-gradient_color_1 = '#ffafaf'
-gradient_color_2 = '#ffafaf'
+# gradient_color_1 = '#ffafff'
+# gradient_color_2 = '#ffafaf'
 
+# orangish gradient
+gradient_color_1 = '#b06a58'
+gradient_color_2 = '#e5c078'
 
 
 [smoothing]

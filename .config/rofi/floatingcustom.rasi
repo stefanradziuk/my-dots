@@ -17,7 +17,8 @@
     anchor: north;
     location: center;
 
-    font: "Fira Code Regular 15";
+    font: "Liga Iosevka Term 15";
+    /* font: "Fira Code Regular 15"; */
 }
 
 #window {

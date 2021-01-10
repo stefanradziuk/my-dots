@@ -3,22 +3,31 @@
 options="keyboard
 rofi launcher
 screen flip
+screenshot
+map touch to monitor
+hide polybar
 power menu
 exit tablet mode"
 
-selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 5)
+selection=$(echo -e "${options}" | rofi -dmenu -p "" -lines "$(wc -l <<< "$options")")
 
 echo "This is your selection: $selection"
 
 case "${selection}" in
-    "screen flip")
-        /home/stefan/bin/flip_screen;;
-    "keyboard")
-        onboard;;
-    "rofi launcher")
-        rofi -show run;;
-    "exit tablet mode")
-        /home/stefan/.config/polybar/launch.sh;;
-    "power menu")
-        /home/stefan/bin/rofi_powermenu;;
+  "screen flip")
+    /home/stefan/bin/flip_screen;;
+  "keyboard")
+    onboard;;
+  "rofi launcher")
+    rofi -show run;;
+  "screenshot")
+    /home/stefan/bin/sscrot;;
+  "map touch to monitor")
+    /home/stefan/bin/rofi_dualmonitor_touch;;
+  "hide polybar")
+    killall polybar;;
+  "exit tablet mode")
+    /home/stefan/.config/polybar/launch.sh;;
+  "power menu")
+    /home/stefan/bin/rofi_powermenu;;
 esac

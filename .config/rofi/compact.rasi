@@ -15,7 +15,7 @@
   background-color: #00000000;
   anchor: north;
   location: center;
-  font: "Fira Mono Regular 15";
+  font: "Liga Iosevka Term 16";
   highlight: bold;
 }
 

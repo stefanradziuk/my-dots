@@ -16,9 +16,6 @@ fi
 export EDITOR='nvim'
 export BROWSER='google-chrome-beta'
 
-# pintos_path
-export PATH="/home/stefan/programming/pintos_task0_sar119/src/utils:$PATH"
-
 unsetopt correct
 
 alias l='ls -lah'
@@ -32,6 +29,7 @@ alias nvim="nvim -p"
 alias icat="kitty +kitten icat"
 alias gdiff="git difftool --no-symlinks --dir-diff"
 alias diff="wdiff"
+alias ayy="yay"
 
 # gui-like ctrl word jumping
 bindkey "^[Od"	backward-word

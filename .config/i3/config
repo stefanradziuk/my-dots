@@ -71,10 +71,11 @@ bindsym $mod+m exec --no-startup-id $HOME/bin/rofi_mons
 bindsym $mod+Shift+m exec --no-startup-id $HOME/bin/rofi_dualmonitor_touch
 
 # rofi setxkbmap picker
-bindsym $mod+Shift+n exec --no-startup-id $HOME/bin/rofi_kbmap
+bindsym $mod+n exec --no-startup-id $HOME/bin/rofi_kbmap
 
 # rofi emoji picker
-bindsym $mod+n exec --no-startup-id rofimoji
+# bindsym $mod+Shift+n exec --no-startup-id rofimoji
+bindsym $mod+Shift+n exec --no-startup-id $HOME/programming/rofimoji/picker/Rofimoji.py
 
 # screenshot
 bindsym $mod+Shift+s exec --no-startup-id $HOME/bin/sscrot -c
@@ -260,32 +261,8 @@ gaps outer  0
 
 bindsym $mod+z exec --no-startup-id $HOME/bin/rofi_gaps
 
-# mode "$switch_gaps" {
-#   bindsym 1 mode "default", gaps inner  all set 15
-#   bindsym 2 mode "default", gaps inner  all set 0
-#   bindsym Escape mode "default"
-# }
-
-# Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
-# workspace colors: stroke bg font
-# bar {
-# 	status_command i3status
-# 	font pango:Fira Code Bold 10
-# 	separator_symbol "|"
-# 	colors {
-# 			background  #1c1c1c
-# 			statusline  #dadee8
-# 			separator   #d0d0d0
-#
-# 			focused_workspace  #4e4e4e #4e4e4e #d0d0d0
-# 			active_workspace   #4e4e4e #4e4e4e #d0d0d0
-# 			inactive_workspace #1c1c1c #1c1c1c #657b83
-# 			urgent_workspace   #2f343a #d68787 #ffffff
-# 			binding_mode       #2f343a #d68787 #ffffff
-# 	}
-# }
-
 exec --no-startup-id i3-battery-popup -L 18 -N
+for_window [title="Battery Warning"] sticky enable
 
 # exec--no-startup-id python $HOME/bin/workspace_renumber.py
 

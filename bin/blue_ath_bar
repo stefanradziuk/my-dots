@@ -8,32 +8,43 @@ fi
 HEADSET="00:0A:45:0C:35:5C"
 CONTROLLER="40:A3:CC:C5:DA:2C"
 
+ICON=""
+
 echo_status() {
   CONNECTED=$(bluetoothctl info "$HEADSET" | awk '{ if ($1=="Connected:") { print $2 } }')
   if [[ "$CONNECTED" == yes ]]; then
     # "ATH connected"
     # echo '%{F#85add4}%{F-}'
-    echo '%{F#87afaf}%{F-}'
+    echo "%{F#87afaf}$ICON%{F-}"
   elif [[ $(bluetoothctl show "$CONTROLLER" | awk '{ if ($1=="Powered:") { print $2 } }') == yes ]]; then
     # "Bluetooth sw controller on"
-    echo ""
+    echo "$ICON"
   elif [[ $(bluetoothctl list) == *Controller* ]]; then
     # "Bluetooth hw on"
-    echo '%{F#626262}%{F-}'
+    echo "%{F#626262}$ICON%{F-}"
   else
     # "Bluetooth hw off"
     echo ''
   fi
 }
 
+keep_trying_to_connect() {
+  while pacmd list-sources | grep "$HEADSET" > /dev/null;
+  do
+    bluetoothctl connect "$HEADSET"
+    sleep 1
+  done
+}
+
 toggle() {
   CONNECTED=$(bluetoothctl info "$HEADSET" | awk '{ if ($1=="Connected:") { print $2 } }')
   if [[ "$CONNECTED" == yes ]]; then
-    bluetoothctl power off
+    # bluetoothctl power off
+    keep_trying_to_connect
   elif [[ $(bluetoothctl show "$CONTROLLER" | awk '{ if ($1=="Powered:") { print $2 } }') == yes ]]; then
-    bluetoothctl connect "$HEADSET"
+    keep_trying_to_connect
   else
-    bluetoothctl power on && bluetoothctl connect "$HEADSET"
+    bluetoothctl power on && keep_trying_to_connect
   fi
 }
 

@@ -13,7 +13,10 @@
 # Configure these to match your hardware (names taken from `xinput` output).
 TOUCHPAD='ETPS/2 Elantech Touchpad'
 TOUCHSCREEN='Wacom Pen and multitouch sensor Finger'
-PEN='Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)'
+PEN='Wacom Pen and multitouch sensor Pen Pen (0)'
+PEN_2='Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)'
+PEN_ERASER='Wacom Pen and multitouch sensor Pen Eraser (0x9b0d329c)'
+
 if [ -z "$1" ]; then
   echo "Missing orientation."
   echo "Usage: $0 [normal|inverted|left|right] [revert_seconds]"
@@ -32,21 +35,29 @@ function do_rotate
       [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 1 0 0 0 1 0 0 0 1
       [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 1 0 0 0 1 0 0 0 1
       [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 1 0 0 0 1 0 0 0 1
+      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 1 0 0 0 1 0 0 0 1
+      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 1 0 0 0 1 0 0 0 1
       ;;
     inverted)
       [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
       [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
       [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
+      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
+      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
       ;;
     left)
       [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
       [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
       [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
+      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
+      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
       ;;
     right)
       [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
       [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
       [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
+      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
+      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
       ;;
   esac
 }

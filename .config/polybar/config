@@ -52,7 +52,8 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Fira Mono:style=Medium:pixelsize=15;3
+font-0 = Liga Iosevka Term Medium:pixelsize=15;3
+; font-0 = Fira Mono:style=Medium:pixelsize=15;3
 font-1 = DejaVuSansMono Nerd Font Mono:pixelsize=13;2
 font-2 = siji:pixelsize=8;1
 
@@ -358,7 +359,7 @@ type = internal/date
 interval = 1
 format = <label>
 
-date = %a%
+date = %a %d
 date-alt = "%a %Y-%m-%d"
 
 time = %H:%M
