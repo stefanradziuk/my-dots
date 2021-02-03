@@ -1,20 +1,28 @@
 #!/bin/bash
 
-if [[ "$#" -ne 1 ]]; then
-  echo "usage: blue_ath_bar -[st]"
-  exit 1
-fi
+# if [[ "$#" -ne 1 ]]; then
+#   echo "usage: blue_ath_bar -[st]"
+#   exit 1
+# fi
 
-HEADSET="00:0A:45:0C:35:5C"
 CONTROLLER="40:A3:CC:C5:DA:2C"
+HEADSET_ATH="00:0A:45:0C:35:5C"
+HEADSET_SONY="38:18:4C:F8:FC:27"
+HEADSET="$HEADSET_ATH"
+
+if [ "$2" = "sony" ]; then
+  HEADSET="$HEADSET_SONY"
+else
+  HEADSET="$HEADSET_ATH"
+fi
 
 ICON=""
 
 echo_status() {
-  CONNECTED=$(bluetoothctl info "$HEADSET" | awk '{ if ($1=="Connected:") { print $2 } }')
-  if [[ "$CONNECTED" == yes ]]; then
-    # "ATH connected"
-    # echo '%{F#85add4}%{F-}'
+  CONNECTED_ATH=$(bluetoothctl info "$HEADSET_ATH" | awk '{ if ($1=="Connected:") { print $2 } }')
+  CONNECTED_SONY=$(bluetoothctl info "$HEADSET_SONY" | awk '{ if ($1=="Connected:") { print $2 } }')
+  if [[ "$CONNECTED_ATH" == yes || "$CONNECTED_SONY" == yes ]]; then
+    # "Either headset connected"
     echo "%{F#87afaf}$ICON%{F-}"
   elif [[ $(bluetoothctl show "$CONTROLLER" | awk '{ if ($1=="Powered:") { print $2 } }') == yes ]]; then
     # "Bluetooth sw controller on"
@@ -29,7 +37,7 @@ echo_status() {
 }
 
 keep_trying_to_connect() {
-  while pacmd list-sources | grep "$HEADSET" > /dev/null;
+  until pacmd list-sources | grep "$HEADSET" > /dev/null;
   do
     bluetoothctl connect "$HEADSET"
     sleep 1

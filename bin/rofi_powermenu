@@ -2,13 +2,15 @@
 
 # adapted from: github / patrick-motard / dotfiles
 
-options="lock
+menu_options="lock
 logout
 sleep
+lock & sleep
 reboot
 shutdown"
 
-selection=$(echo -e "${options}" | rofi -dmenu -p "power menu" -lines 5)
+dialog_length=$(echo "$menu_options" | wc -l)
+selection=$(echo -e "$menu_options" | rofi -dmenu -p "power menu" -lines "$dialog_length")
 locker=/home/stefan/bin/lockme
 
 echo "This is your selection: $selection"
@@ -19,6 +21,8 @@ case "${selection}" in
     "logout")
         i3-msg exit;;
     "sleep")
+        systemctl suspend;;
+    "lock & sleep")
         $locker && systemctl suspend;;
     "reboot")
         systemctl reboot;;

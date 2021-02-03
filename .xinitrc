@@ -17,9 +17,6 @@ fi
 # apply terminal emulator settings
 xrdb -merge /home/stefan/.Xresources
 
-# set a cursor (the default is left_ptr)
-xsetroot -cursor_name rtl_logo
-
 # configure the touchpad 
 # migrated to /etc/X11/xorg.conf.d/30-touchpad.conf
 # xinput set-prop 13 307 1

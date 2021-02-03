@@ -508,5 +508,7 @@ click-left = /home/stefan/bin/rofi_tablet
 type = custom/script
 exec = /home/stefan/bin/blue_ath_bar -s
 interval = 2
-click-left = /home/stefan/bin/blue_ath_bar -t
+click-left = /home/stefan/bin/blue_ath_bar -t sony
+click-right = /home/stefan/bin/blue_ath_bar -t ath
+label = %output%
 

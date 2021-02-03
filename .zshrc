@@ -26,10 +26,12 @@ alias :e="nvim -p"
 alias vi="nvim -p"
 alias vim="nvim -p"
 alias nvim="nvim -p"
+alias sim="sudo -E nvim"
 alias icat="kitty +kitten icat"
 alias gdiff="git difftool --no-symlinks --dir-diff"
 alias diff="wdiff"
 alias ayy="yay"
+alias sicstus="rlwrap /usr/local/sicstus4.4.1/bin/sicstus"
 
 # gui-like ctrl word jumping
 bindkey "^[Od"	backward-word
