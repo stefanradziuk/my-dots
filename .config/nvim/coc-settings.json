@@ -1,13 +1,41 @@
 {
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["haskell", "scala", "py", "sh", "c", "cc", "cpp", "c++"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "haskell",
+    "scala",
+    "py",
+    "sh"
+  ],
+  "diagnostic.refreshOnInsertMode": true,
   "metals.javaHome": "/usr/lib/jvm/java-11-openjdk/",
   "metals.sbtScript": "/usr/bin/sbt",
+  "metals.showInferredType": true,
+  "metals.showImplicitConversionsAndClasses": true,
+  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+  "python.sortImports.path": "~/.local/bin/isort",
   "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    },
     "ccls": {
       "command": "ccls",
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "filetypes": [
+        "c",
+        "cc",
+        "cpp",
+        "c++",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".git/",
+        ".hg/"
+      ],
       "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
@@ -16,9 +44,25 @@
     },
     "haskell": {
       "command": "haskell-language-server-wrapper",
-      "args": ["--lsp"],
-      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
-      "filetypes": ["haskell", "lhaskell"]
+      "args": [
+        "--lsp"
+      ],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": [
+        "haskell",
+        "lhaskell"
+      ],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "formattingProvider": "stylish-haskell"
+        }
+      }
     }
   }
 }

@@ -26,49 +26,49 @@ fi
 
 function do_rotate
 {
-  xrandr --output $1 --rotate $2
+  xrandr --output "$1" --rotate "$2"
 
   TRANSFORM='Coordinate Transformation Matrix'
 
   case "$2" in
     normal)
-      [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 1 0 0 0 1 0 0 0 1
-      [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 1 0 0 0 1 0 0 0 1
-      [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 1 0 0 0 1 0 0 0 1
-      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 1 0 0 0 1 0 0 0 1
-      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 1 0 0 0 1 0 0 0 1
+      [ -n "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 1 0 0 0 1 0 0 0 1
+      [ -n "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 1 0 0 0 1 0 0 0 1
+      [ -n "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 1 0 0 0 1 0 0 0 1
+      [ -n "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 1 0 0 0 1 0 0 0 1
+      [ -n "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 1 0 0 0 1 0 0 0 1
       ;;
     inverted)
-      [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
-      [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
-      [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
-      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
-      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
+      [ -n "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
+      [ -n "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
+      [ -n "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
+      [ -n "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
+      [ -n "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" -1 0 1 0 -1 1 0 0 1
       ;;
     left)
-      [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
-      [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
-      [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
-      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
-      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
+      [ -n "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
+      [ -n "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
+      [ -n "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
+      [ -n "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
+      [ -n "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 0 -1 1 1 0 0 0 0 1
       ;;
     right)
-      [ ! -z "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
-      [ ! -z "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
-      [ ! -z "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
-      [ ! -z "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
-      [ ! -z "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
+      [ -n "$TOUCHPAD" ]    && xinput set-prop "$TOUCHPAD"    "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
+      [ -n "$TOUCHSCREEN" ] && xinput set-prop "$TOUCHSCREEN" "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
+      [ -n "$PEN" ]         && xinput set-prop "$PEN"         "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
+      [ -n "$PEN_2" ]       && xinput set-prop "$PEN_2"       "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
+      [ -n "$PEN_ERASER" ]  && xinput set-prop "$PEN_ERASER"  "$TRANSFORM" 0 1 0 -1 0 1 0 0 1
       ;;
   esac
 }
 
-XDISPLAY=`xrandr --current | grep primary | sed --expression='s/ .*//g'`
-XROT=`xrandr --current --verbose | grep primary | egrep --only-matching ' (normal|left|inverted|right) '`
+XDISPLAY=$(xrandr --current | grep primary | sed --expression='s/ .*//g')
+XROT=$(xrandr --current --verbose | grep primary | grep --extended-regexp --only-matching ' (normal|left|inverted|right) ')
 
-do_rotate $XDISPLAY $1
+do_rotate "$XDISPLAY" "$1"
 
-if [ ! -z "$2" ]; then
-  sleep $2
-  do_rotate $XDISPLAY $XROT
+if [ -n "$2" ]; then
+  sleep "$2"
+  do_rotate "$XDISPLAY" "$XROT"
   exit 0
 fi

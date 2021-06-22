@@ -15,23 +15,30 @@ fi
 
 export EDITOR='nvim'
 export BROWSER='google-chrome-beta'
+export JAVA_HOME=/usr/lib/jvm/default
+export XDG_DATA_HOME=/home/stefan/.local/share
 
 unsetopt correct
 
 alias l='ls -lah'
-alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 8 | tr -d '\n'; echo"
+alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 16 | tr -d '\n'; echo"
 alias sudo='sudo '
 alias :q="exit"
 alias :e="nvim -p"
 alias vi="nvim -p"
 alias vim="nvim -p"
 alias nvim="nvim -p"
+alias vimi="nvim -c 'startinsert'"
+alias svim="sudo -E nvim"
 alias sim="sudo -E nvim"
 alias icat="kitty +kitten icat"
 alias gdiff="git difftool --no-symlinks --dir-diff"
 alias diff="wdiff"
 alias ayy="yay"
 alias sicstus="rlwrap /usr/local/sicstus4.4.1/bin/sicstus"
+alias emacs="emacs -nw"
+alias pyton="python"
+alias pytonne="python"
 
 # gui-like ctrl word jumping
 bindkey "^[Od"	backward-word
@@ -44,14 +51,22 @@ gi() {
   curl "https://www.toptal.com/developers/gitignore/api/$1" >> .gitignore
 }
 
+mann() {
+  curl "cheat.sh/$1" | bat
+}
+
 mailman_sync() {
   echo "docsoc's password: "
   read -sr
   echo "$REPLY" | ssh docsoc 'mailmansub/run.sh'
 }
 
-docclone() {
-  DOC_SHORTCODE='sar119'
-  LAB_DEPLOYER='lab2021_autumn'
-  git clone "git@gitlab.doc.ic.ac.uk:$LAB_DEPLOYER/$1_$DOC_SHORTCODE.git"
+# touches a file, creating parent dirs as necessary
+mktouch() {
+  mkdir -p "$(dirname "$1")" && touch "$1"
 }
+
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
+fi
+

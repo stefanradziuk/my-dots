@@ -37,7 +37,7 @@ xbindkeys -f /home/stefan/.xbindkeysrc
 ~/.fehbg
 
 # making the cursor invisible after 10 s of inactivity
-unclutter --timeout 10 --ignore-scrolling &
+unclutter --timeout 1 --ignore-scrolling &
 
 # automatic 'tablet mode' switching
 watch_tablet &

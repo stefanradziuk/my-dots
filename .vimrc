@@ -7,7 +7,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
-" Plug 'zxqfl/tabnine-vim'
+Plug 'szw/vim-maximizer'
+Plug 'ARM9/arm-syntax-vim'
 " Plug 'RRethy/vim-hexokinase' " (css colors)
 
 " Initialize plugin system
@@ -27,6 +28,9 @@ let g:gitgutter_sign_added    = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed  = '-'
 let g:gitgutter_sign_modified_removed = '~-'
+
+" arm assembly syntax highlighting
+au BufNewFile,BufRead *.s,*.S set filetype=arm
 
 " {{{ coc
 
@@ -191,7 +195,7 @@ set whichwrap=b,s,<,>,[,]
 " highlight trailing whitespace
 set list lcs=trail:~,extends:@,precedes:@,tab:\·\ 
 set display=lastline "@@@ on wrap
-set number relativenumber
+set number " relativenumber
 "set colorcolumn=80
 "set cursorline
 

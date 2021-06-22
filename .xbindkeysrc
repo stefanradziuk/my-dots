@@ -1,0 +1,36 @@
+# Increase backlight
+"xbacklight + 5"
+  XF86MonBrightnessUp
+# Decrease backlight
+"xbacklight - 5"
+  XF86MonBrightnessDown
+# Toggle backlight
+"/home/stefan/bin/backlight_toggle"
+  XF86Display
+
+# Rotate screen
+"/home/stefan/bin/flip_screen"
+  XF86Tools
+
+# when using i3status:
+# "amixer set Master 5+ ; killall -USR1 i3status"
+# Increase volume
+# "pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; amixer set Master 5%+"
+# optionally: --max-volume 100
+"pulsemixer --unmute --change-volume +5"
+   XF86AudioRaiseVolume
+# Decrease volume
+# "pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; amixer set Master 5%-"
+"pulsemixer --unmute --change-volume -5"
+   XF86AudioLowerVolume
+# Mute volume
+"pulsemixer --toggle-mute"
+   XF86AudioMute
+
+# Mute mic
+"/home/stefan/bin/mutemic"
+   XF86AudioMicMute
+
+# Screenshot
+"/home/stefan/bin/sscrot"
+   Print
