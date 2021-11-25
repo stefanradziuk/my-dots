@@ -59,7 +59,7 @@ font-2 = siji:pixelsize=8;1
 
 modules-left = i3
 modules-center =
-modules-right = bluetooth pulseaudio battery wlan eth date
+modules-right = redshifter pulseaudio battery wlan eth date
 
 ; Tray settings
 
@@ -146,7 +146,7 @@ font-2 = ${bar/bot.font-2}
 
 modules-left = ${bar/bot.modules-left}
 modules-center =
-modules-right = tablet bluetooth pulseaudio battery wlan eth date
+modules-right = tablet redshifter pulseaudio battery wlan eth date
 
 tray-position = ${bar/bot.tray-position}
 tray-padding = ${bar/bot.tray-padding}
@@ -512,3 +512,13 @@ click-left = /home/stefan/bin/blue_ath_bar -t sony
 click-right = /home/stefan/bin/blue_ath_bar -t ath
 label = %output%
 
+[module/redshifter]
+type = custom/text
+content = 
+; 
+; 
+click-left = /home/stefan/bin/redshifter default
+click-middle = killall picom ; picom --backend glx --glx-fshader-win "$(cat /home/stefan/grayscale.glsl)"
+click-right = /home/stefan/bin/redshifter off
+scroll-up = /home/stefan/bin/redshifter add 200
+scroll-down = /home/stefan/bin/redshifter sub 200

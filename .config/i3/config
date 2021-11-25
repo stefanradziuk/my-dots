@@ -62,7 +62,7 @@ bindsym $mod+Shift+m exec --no-startup-id $HOME/bin/rofi_dualmonitor_touch
 bindsym $mod+n exec --no-startup-id $HOME/bin/rofi_kbmap
 
 # rofi emoji picker
-bindsym $mod+Shift+n exec --no-startup-id rofimoji
+bindsym $mod+Shift+n exec --no-startup-id /home/stefan/programming/rofimoji/src/picker/rofimoji.py
 
 # screenshot
 bindsym $mod+Shift+s exec --no-startup-id $HOME/bin/sscrot -c
@@ -237,6 +237,8 @@ exec --no-startup-id i3-battery-popup -L 18 -N
 for_window [title="Battery Warning"] sticky enable
 
 # exec--no-startup-id python $HOME/bin/workspace_renumber.py
+
+exec_always --no-startup-id picom
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec --no-startup-id hideIt.sh -N 'polybar' -d bottom --region 0x1080+1920+-10 -p 0 -i 1 -w

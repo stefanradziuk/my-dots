@@ -39,12 +39,15 @@ alias sicstus="rlwrap /usr/local/sicstus4.4.1/bin/sicstus"
 alias emacs="emacs -nw"
 alias pyton="python"
 alias pytonne="python"
+alias copy="xclip -selection clipboard"
 
 # gui-like ctrl word jumping
 bindkey "^[Od"	backward-word
 bindkey "^[Oc"	forward-word
 bindkey "^H"	backward-kill-word
 bindkey "^[[3^"	kill-word
+
+source "$HOME/.secrets"
 
 gi() {
   touch .gitignore

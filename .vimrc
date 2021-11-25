@@ -10,6 +10,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'szw/vim-maximizer'
 Plug 'ARM9/arm-syntax-vim'
 " Plug 'RRethy/vim-hexokinase' " (css colors)
+" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
 " Initialize plugin system
 call plug#end()
@@ -217,6 +219,10 @@ set smartcase
 set incsearch
 set nohlsearch
 
+" change the direction of new splits
+set splitbelow
+set splitright
+
 " leader y copies selection into "c and puts in system clipboard
 vnoremap <silent><Leader>y "cy <Bar> :call system('xclip -selection clipboard', @c)<CR>
 
@@ -278,8 +284,8 @@ highlight StatusLineNC    ctermfg=bg    ctermbg=245
 " compile markdown on save
 " autocmd BufWrite *.md :silent MdCompile
 
-" enable and set spellcheck to polish without capitalisation rules
-autocmd FileType markdown set spell | set spelllang=pl | set spellcapcheck=
+" enable and set spellcheck to english without capitalisation rules
+autocmd FileType markdown set spell | set spelllang=en | set spellcapcheck=
 
 " don't highlight katex underscores
 autocmd FileType markdown syn match MarkdownIgnore "\$.*_.*\$"

@@ -6,6 +6,11 @@
  * Color scheme changed
  */
 
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
 * {
   space: #1c1c1c; //background
   steel: #d0d0d0; //light texts

@@ -26,7 +26,36 @@ convert "$TMPBG" -scale "$(( 100 / SCALE_FACTOR))%" -blur 0x1.25 -resize "$(( 10
 # convert "$TMPBG" "$icon" -gravity center -composite -matte "$TMPBG"
 
 # lock the screen
-i3lock --ignore-empty-password --no-unlock-indicator --image="$TMPBG"
+i3lock \
+   --ignore-empty-password \
+   --image="$TMPBG" \
+   --radius=20 \
+   --ring-width=10 \
+   --inside-color=00000000 \
+   --ring-color=00000000 \
+   --line-uses-inside \
+   `# keypress` \
+   --keyhl-color=d0d0d0ff \
+   `# backspace press` \
+   --bshl-color=d75f87ff \
+   --separator-color=00000000 \
+   `# verification` \
+   --insidever-color=00000000 \
+   --ringver-color=d0d0d0ff \
+   `# wrong pass` \
+   --insidewrong-color=00000000 \
+   --ringwrong-color=d75f87ff \
+   `# caps lock notification text` \
+   --modif-color=d75f87ff \
+   --ind-pos="x+3*r:y+h-3*r" \
+   `#--ind-pos="x+0.5*w:y+0.7*h"` \
+   --verif-text="" \
+   --noinput-text="" \
+   --wrong-text="" \
+   --pass-media-keys \
+   --pass-screen-keys \
+   --pass-volume-keys \
+   --show-failed-attempts \
 
 # remove the tmp file
 rm "$TMPBG"
