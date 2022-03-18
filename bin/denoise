@@ -1,0 +1,22 @@
+#!/bin/bash
+
+MODULE_NAME="module-ladspa-sink"
+
+while getopts ":x" opt; do
+  case $opt in
+    x)
+      pacmd unload-module "$MODULE_NAME"
+      exit 0
+      ;;
+  esac
+done
+
+RUNNING_SINK=$(pactl list sinks short | awk '$7 == "RUNNING" {print $2; exit}')
+
+pacmd load-module "$MODULE_NAME" \
+  sink_name=denoise_sink_for_apps.stereo \
+  sink_master="$RUNNING_SINK" \
+  label=noise_suppressor_stereo \
+  plugin=librnnoise_ladspa.so \
+  control=0
+

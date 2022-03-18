@@ -3,7 +3,6 @@
 [[ $# -eq 0 ]] && { echo "No arguments provided for touch_mapper" ; exit 1; }
 
 output=$1
-log=/dev/null
 
 # echo "Running touch_mapper on $(date), mapping to $output" >> $log
 # xinput list >> $log
@@ -14,10 +13,9 @@ xinput enable "Wacom Pen and multitouch sensor Pen Pen (0)"
 xinput enable "Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)"
 xinput enable "Wacom Pen and multitouch sensor Pen Eraser (0x9b0d329c)"
 
-xinput map-to-output "Wacom Pen and multitouch sensor Finger" "$output" &>> $log
-xinput map-to-output "Wacom Pen and multitouch sensor Pen" "$output" &>> $log
-xinput map-to-output "Wacom Pen and multitouch sensor Pen Pen (0)" "$output" &>> $log
-xinput map-to-output "Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)" "$output" &>> $log
-xinput map-to-output "Wacom Pen and multitouch sensor Pen Eraser (0x9b0d329c)" "$output" &>> $log
+xinput map-to-output "Wacom Pen and multitouch sensor Finger" "$output"
+xinput map-to-output "Wacom Pen and multitouch sensor Pen" "$output"
+xinput map-to-output "Wacom Pen and multitouch sensor Pen Pen (0)" "$output"
+xinput map-to-output "Wacom Pen and multitouch sensor Pen Pen (0x9b0d329c)" "$output"
+xinput map-to-output "Wacom Pen and multitouch sensor Pen Eraser (0x9b0d329c)" "$output"
 
-echo -e "\n" >> $log

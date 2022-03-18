@@ -17,14 +17,14 @@
 # Increase volume
 # "pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; amixer set Master 5%+"
 # optionally: --max-volume 100
-"pulsemixer --unmute --change-volume +5"
+"pulsemixer --unmute --change-volume +5 && volume_notification"
    XF86AudioRaiseVolume
 # Decrease volume
 # "pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; amixer set Master 5%-"
-"pulsemixer --unmute --change-volume -5"
+"pulsemixer --unmute --change-volume -5 && volume_notification"
    XF86AudioLowerVolume
 # Mute volume
-"pulsemixer --toggle-mute"
+"pulsemixer --toggle-mute && volume_notification"
    XF86AudioMute
 
 # Mute mic

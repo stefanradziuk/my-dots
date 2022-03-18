@@ -14,6 +14,8 @@ selection=$(echo -e "${options}" | rofi -dmenu -p "" -lines "$(wc -l <<< "$op
 echo "This is your selection: $selection"
 
 case "${selection}" in
+  "")
+    exit 0;;
   "screen flip")
     /home/stefan/bin/flip_screen;;
   "keyboard")
@@ -30,4 +32,6 @@ case "${selection}" in
     /home/stefan/.config/polybar/launch.sh;;
   "power menu")
     /home/stefan/bin/rofi_powermenu;;
+  *)
+    rofi -e "unknown command: '$selection'";;
 esac

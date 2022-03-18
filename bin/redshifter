@@ -1,0 +1,38 @@
+#!/bin/bash
+
+RECENT_TEMP_FILE=/home/stefan/.cache/redshifter_recent_temp
+DEFAULT_TEMP=6500
+
+function set_temp() {
+  redshift -PO "$1"
+  echo "$1" > "$RECENT_TEMP_FILE"
+}
+
+if [[ ! -f "$RECENT_TEMP_FILE" ]]; then
+  echo "$DEFAULT_TEMP" > "$RECENT_TEMP_FILE"
+fi
+
+curr_temp=$(cat "$RECENT_TEMP_FILE")
+
+# TODO print usage if $2 missing
+case "$1" in
+  "add")
+    new_temp=$((curr_temp + $2))
+    set_temp "$new_temp"
+    ;;
+  "sub")
+    new_temp=$((curr_temp - $2))
+    set_temp "$new_temp"
+    ;;
+  "default")
+    set_temp "$DEFAULT_TEMP"
+    ;;
+  "off")
+    redshift -x
+    ;;
+  *)
+    echo "usage..."
+    exit 1
+    ;;
+esac
+

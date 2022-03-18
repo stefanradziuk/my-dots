@@ -17,6 +17,7 @@ export EDITOR='nvim'
 export BROWSER='google-chrome-beta'
 export JAVA_HOME=/usr/lib/jvm/default
 export XDG_DATA_HOME=/home/stefan/.local/share
+export XDG_CONFIG_HOME="$HOME/.config"
 
 unsetopt correct
 
@@ -40,6 +41,8 @@ alias emacs="emacs -nw"
 alias pyton="python"
 alias pytonne="python"
 alias copy="xclip -selection clipboard"
+alias cate="cksum"
+alias colorpicker="colorpicker --short --preview"
 
 # gui-like ctrl word jumping
 bindkey "^[Od"	backward-word
@@ -67,6 +70,10 @@ mailman_sync() {
 # touches a file, creating parent dirs as necessary
 mktouch() {
   mkdir -p "$(dirname "$1")" && touch "$1"
+}
+
+py() {
+  python -c "print($*)"
 }
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then

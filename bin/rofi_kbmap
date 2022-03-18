@@ -22,6 +22,8 @@ awk_formatter='{print $0=="'${current_pretty}'" ? "> "$0 : $0}'
 # get the user input through rofi
 selection_pretty=$(echo -en "$OPTIONS" | awk "$awk_formatter" | rofi -dmenu -p "keyboard layout")
 
+[[ -z "$selection_pretty" ]] && echo "No selection made" && exit 0
+
 # get the corresponding filename from the map
 selection_filename="${PRETTY_TO_FILENAME[$selection_pretty]}"
 

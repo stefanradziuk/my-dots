@@ -59,7 +59,7 @@ font-2 = siji:pixelsize=8;1
 
 modules-left = i3
 modules-center =
-modules-right = redshifter pulseaudio battery wlan eth date
+modules-right = redshifter pulseaudio-control battery wlan eth date
 
 ; Tray settings
 
@@ -104,8 +104,8 @@ override-redirect = false
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
 
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
+scroll-up = #i3.next
+scroll-down = #i3.prev
 
 cursor-click = default
 cursor-scroll = default
@@ -146,7 +146,7 @@ font-2 = ${bar/bot.font-2}
 
 modules-left = ${bar/bot.modules-left}
 modules-center =
-modules-right = tablet redshifter pulseaudio battery wlan eth date
+modules-right = tablet redshifter pulseaudio-control battery wlan eth date
 
 tray-position = ${bar/bot.tray-position}
 tray-padding = ${bar/bot.tray-padding}
@@ -386,24 +386,39 @@ label-volume-foreground = ${root.foreground}
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = 奄 muted
 
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.foreground}
-bar-volume-foreground-1 = ${colors.foreground}
-bar-volume-foreground-2 = ${colors.foreground}
-bar-volume-foreground-3 = ${colors.foreground}
-bar-volume-foreground-4 = ${colors.foreground}
-bar-volume-foreground-5 = ${colors.foreground}
-bar-volume-foreground-6 = ${colors.foreground}
-bar-volume-gradient = false
-bar-volume-indicator = ▒
-bar-volume-indicator-foreground = #fff
-bar-volume-indicator-font = 3
-bar-volume-fill = ▓
-bar-volume-fill-font = 3
-bar-volume-fill-foreground = ${colors.foreground}
-bar-volume-empty = ░
-bar-volume-empty-font = 3
-bar-volume-empty-foreground = ${colors.foreground}
+# bar-volume-width = 10
+# bar-volume-foreground-0 = ${colors.foreground}
+# bar-volume-foreground-1 = ${colors.foreground}
+# bar-volume-foreground-2 = ${colors.foreground}
+# bar-volume-foreground-3 = ${colors.foreground}
+# bar-volume-foreground-4 = ${colors.foreground}
+# bar-volume-foreground-5 = ${colors.foreground}
+# bar-volume-foreground-6 = ${colors.foreground}
+# bar-volume-gradient = false
+# bar-volume-indicator = ▒
+# bar-volume-indicator-foreground = #fff
+# bar-volume-indicator-font = 3
+# bar-volume-fill = ▓
+# bar-volume-fill-font = 3
+# bar-volume-fill-foreground = ${colors.foreground}
+# bar-volume-empty = ░
+# bar-volume-empty-font = 3
+# bar-volume-empty-foreground = ${colors.foreground}
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 0
+label-foreground = ${colors.foreground}
+
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume "奄" --icon-muted "奄" --notifications --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: " --sink-nickname "bluez_sink.38_18_4C_F8_FC_27.a2dp_sink:Sony" --sink-nickname "bluez_sink.00_0A_45_0C_35_5C.a2dp_sink:ATH" --format '$VOL_ICON ${VOL_LEVEL}%  $SINK_NICKNAME' listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute && volume_notification
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.hw_0_7" next-sink
+scroll-up = pulsemixer --unmute --change-volume +5 && volume_notification
+scroll-down = pulsemixer --unmute --change-volume -5 && volume_notification
 
 [module/alsa]
 type = internal/alsa
@@ -518,7 +533,6 @@ content = 
 ; 
 ; 
 click-left = /home/stefan/bin/redshifter default
-click-middle = killall picom ; picom --backend glx --glx-fshader-win "$(cat /home/stefan/grayscale.glsl)"
-click-right = /home/stefan/bin/redshifter off
+click-right = /home/stefan/bin/rofi_picom
 scroll-up = /home/stefan/bin/redshifter add 200
 scroll-down = /home/stefan/bin/redshifter sub 200

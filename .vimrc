@@ -3,7 +3,9 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'junegunn/seoul256.vim'
+Plug 'stefanradziuk/seoul256.vim'
+" Plug 'noahfrederick/vim-noctu'
+Plug 'chriskempson/base16-vim'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
@@ -197,7 +199,7 @@ set whichwrap=b,s,<,>,[,]
 " highlight trailing whitespace
 set list lcs=trail:~,extends:@,precedes:@,tab:\·\ 
 set display=lastline "@@@ on wrap
-set number " relativenumber
+set number relativenumber
 "set colorcolumn=80
 "set cursorline
 
@@ -291,6 +293,8 @@ autocmd FileType markdown set spell | set spelllang=en | set spellcapcheck=
 autocmd FileType markdown syn match MarkdownIgnore "\$.*_.*\$"
 
 " }}}
+
+map Y yy
 
 :command Mailgen !cd /home/stefan/documents/docsoc/mailgen/ && ./mailgen.js %:p
 

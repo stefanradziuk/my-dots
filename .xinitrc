@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 #
@@ -17,7 +16,7 @@ fi
 # apply terminal emulator settings
 xrdb -merge /home/stefan/.Xresources
 
-# configure the touchpad 
+# configure the touchpad
 # migrated to /etc/X11/xorg.conf.d/30-touchpad.conf
 # xinput set-prop 13 307 1
 # xinput set-prop 13 315 1
@@ -32,9 +31,7 @@ xrdb -merge /home/stefan/.Xresources
 
 xbindkeys -f /home/stefan/.xbindkeysrc
 
-# feh --bg-max --randomize ~/wallpapers/stalenhag/*
-# feh --bg-fill ~/pictures/wallpapers/jap/1.jpg &
-~/.fehbg
+# ~/.fehbg
 
 # making the cursor invisible after 10 s of inactivity
 unclutter --timeout 1 --ignore-scrolling &
@@ -42,5 +39,9 @@ unclutter --timeout 1 --ignore-scrolling &
 # automatic 'tablet mode' switching
 watch_tablet &
 
-exec i3
+# exec i3
+
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+exec gnome-session
 

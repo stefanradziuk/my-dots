@@ -52,7 +52,7 @@ bindsym $mod+d exec --no-startup-id zsh -c "rofi -show run"
 bindsym $mod+g exec --no-startup-id $HOME/bin/rofi_surfraw
 
 # rofi ssh picker
-bindsym $mod+Shift+g exec --no-startup-id rofi -show ssh -lines 4
+# bindsym $mod+Shift+g exec --no-startup-id rofi -show ssh -lines 4
 
 # rofi dual monitor picker
 bindsym $mod+m exec --no-startup-id $HOME/bin/rofi_mons
@@ -238,13 +238,17 @@ for_window [title="Battery Warning"] sticky enable
 
 # exec--no-startup-id python $HOME/bin/workspace_renumber.py
 
-exec_always --no-startup-id picom
+exec_always --no-startup-id $HOME/programming/picom/build/src/picom --daemon --config /dev/null --backend glx --vsync
+
+exec_always --no-startup-id $HOME/.fehbg
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec --no-startup-id hideIt.sh -N 'polybar' -d bottom --region 0x1080+1920+-10 -p 0 -i 1 -w
 
 # restart polybar
 bindsym $mod+Shift+b exec --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec_always --no-startup-id dunst
 
 # correct handling of floating dialogs
 for_window [window_role="pop-up"] floating enable

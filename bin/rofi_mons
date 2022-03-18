@@ -12,6 +12,9 @@ selection=$(echo -e "${options}" | rofi -dmenu -p "monitors" -lines 6)
 echo "This is your selection: $selection"
 
 case "${selection}" in
+  "")
+    echo "No selection made"
+    exit 0;;
   "primary only")
     mons -o;;
   "secondary only")
@@ -24,6 +27,8 @@ case "${selection}" in
     mons -e top;;
   "left vertical")
     xrandr --output HDMI2 --auto --pos 0x0 --rotate left --output eDP1 --auto --pos 1080x840 --primary;;
+  *)
+    rofi -e "unknown command: '$selection'";;
 esac
 
 /home/stefan/bin/touch_mapper eDP1

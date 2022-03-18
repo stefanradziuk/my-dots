@@ -16,6 +16,9 @@ locker=/home/stefan/bin/lockme
 echo "This is your selection: $selection"
 
 case "${selection}" in
+    "")
+        echo "No selection made"
+        exit 0;;
     "lock")
         exec $locker;;
     "logout")
@@ -28,4 +31,6 @@ case "${selection}" in
         systemctl reboot;;
     "shutdown")
         systemctl poweroff -i;;
+    *)
+        rofi -e "unknown command: '$selection'";;
 esac

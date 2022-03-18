@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# currently using curl -n instead of -u
+# echo "password: "
+# read -sr PASSWORD
+# CREDENTIALS="sar119:$PASSWORD"
+
+ORG_URL='https://teaching.doc.ic.ac.uk/labts/lab_exercises/2021/exercises/559/repository/62638?milestone=802'
+
+if [[ "$1" != "" ]]
+then
+  ORG_URL="$1"
+fi
+
+echo "$ORG_URL"
+
+POST_URL=$(curl -n -L "$ORG_URL" | grep "Request test" | awk -F"\"" '{print $6}')
+
+POST_URL_BASE=$(echo "$POST_URL" | awk -F"?" '{print$1; exit}')
+echo "Base URL: $POST_URL_BASE"
+POST_URL_QUERY=$(echo "$POST_URL" | awk -F"?" '{print$2; exit}')
+echo "Query: $POST_URL_QUERY"
+
+curl -n -d "$POST_URL_QUERY" -X POST -L "$POST_URL_BASE"
+

@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+PICOM_BIN="/home/stefan/programming/picom/build/src/picom"
+SHADER_DIR="/home/stefan/.config/picom/shaders"
+
+# TODO vanilla no transparency glx just vsync setup
+OPTIONS="kill picom
+vsync
+transparent clipping
+shader"
+
+
+dialog_length=$(echo "$OPTIONS" | wc -l)
+selection=$(echo -e "$OPTIONS" | rofi -dmenu -p "picom" -lines "$dialog_length")
+
+case "${selection}" in
+  "")
+    echo "No selection made"
+    exit 0;;
+  "kill picom")
+    killall picom;;
+  "vsync")
+    "$PICOM_BIN" \
+      --daemon \
+      --config /dev/null \
+      --backend glx \
+      --vsync;;
+  "transparent clipping")
+    "$PICOM_BIN" \
+      --daemon \
+      --menu-opacity=0.5 \
+      --experimental-backends \
+      --transparent-clipping;;
+  "shader")
+    shader_options=$(ls "$SHADER_DIR")
+    shader_dialog_length=$(echo "$shader_options" | wc -l)
+    shader_selection=$(echo -e "$shader_options" | rofi -dmenu -p "shader" -lines "$shader_dialog_length")
+
+    [[ -z "$shader_selection" ]] && echo "No shader selected" && exit 0
+
+    "$PICOM_BIN" \
+      `# --daemon` \
+      --config /dev/null \
+      --backend glx \
+      --glx-fshader-win "$(cat "$SHADER_DIR/$shader_selection")";;
+  *)
+    rofi -e "unknown command: '$selection'";;
+esac
