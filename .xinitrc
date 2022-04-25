@@ -31,17 +31,19 @@ xrdb -merge /home/stefan/.Xresources
 
 xbindkeys -f /home/stefan/.xbindkeysrc
 
-# ~/.fehbg
-
 # making the cursor invisible after 10 s of inactivity
 unclutter --timeout 1 --ignore-scrolling &
 
 # automatic 'tablet mode' switching
 watch_tablet &
 
-# exec i3
+~/.fehbg
+exec i3
 
-export XDG_SESSION_TYPE=x11
-export GDK_BACKEND=x11
-exec gnome-session
+# export XDG_SESSION_TYPE=x11
+# export GDK_BACKEND=x11
+# exec gnome-session
+
+# export DESKTOP_SESSION=plasma
+# exec startplasma-x11
 

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if pidof gnome-shell > /dev/null; then
+  exit 1
+fi
+
+# TODO && behaviour?
 killall -q polybar
 polybar bot
 

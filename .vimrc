@@ -14,6 +14,7 @@ Plug 'ARM9/arm-syntax-vim'
 " Plug 'RRethy/vim-hexokinase' " (css colors)
 " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'LnL7/vim-nix'
 
 " Initialize plugin system
 call plug#end()
