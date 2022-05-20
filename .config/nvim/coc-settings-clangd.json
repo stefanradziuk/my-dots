@@ -1,0 +1,13 @@
+{
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["scala", "c", "cc", "cpp", "c++", "py", "sh"],
+  "metals.javaHome": "/usr/lib/jvm/java-11-openjdk/",
+  "metals.sbtScript": "/usr/bin/sbt",
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+    }
+  }
+}

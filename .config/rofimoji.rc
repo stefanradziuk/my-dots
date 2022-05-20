@@ -1,0 +1,5 @@
+action = clipboard
+skin-tone = ask
+max-recent = 0
+prompt = 🐝
+no-frecency = False
