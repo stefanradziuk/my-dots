@@ -1,0 +1,302 @@
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+set $term kitty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu rofi -show run | xargs swaymsg exec --
+
+### Output configuration
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg /home/stefan/pictures/wallpapers/raytracing_purple.png fill
+output HDMI-A-2 resolution 1920x1080 position 0,0
+# output eDP-1 disable
+# output eDP-1 resolution 1920x1080 position 0,1080
+# output eDP-1 scale 1.25
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+seat * hide_cursor 3000
+seat * hide_cursor when-typing enable
+
+set $cursor_theme phinger-cursors
+set $cursor_size 32
+set $gnome-schema org.gnome.desktop.interface
+
+seat seat0 xcursor_theme $cursor_theme $cursor_size
+
+exec_always {
+  gsettings set $gnome-schema cursor-theme $cursor_theme
+  gsettings set $gnome_schema cursor-size $cursor_size
+}
+
+### Input configuration
+input "type:pointer" {
+  pointer_accel 0.7
+}
+
+input "type:touchpad" {
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+  pointer_accel 0.5
+}
+
+input "type:keyboard" {
+  repeat_delay 400
+  repeat_rate 25
+  xkb_layout "gb,pl"
+  xkb_options "grp:ctrls_toggle"
+}
+
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+
+# Basics:
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Start a floating terminal
+for_window [title="floating_term"] floating enable
+bindsym $mod+Shift+Return exec $term --title floating_term
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start your launcher
+bindsym $mod+d exec $menu
+
+# Surfraw
+bindsym $mod+g exec $HOME/bin/rofi_surfraw
+
+# Screen lock
+bindsym Mod1+k exec swaylock
+
+# Power menu
+bindsym Mod1+j exec $HOME/bin/rofi_powermenu
+
+# rofi dual monitor picker
+# TODO these need to be ported to Wayland :(
+# bindsym $mod+m exec $HOME/bin/rofi_mons
+# bindsym $mod+Shift+m exec $HOME/bin/rofi_dualmonitor_touch
+
+# rofi emoji picker
+# TODO set up rofimoji fork
+# bindsym $mod+Shift+n exec /home/stefan/programming/rofimoji/src/picker/rofimoji.py
+bindsym $mod+Shift+n exec rofimoji --action copy
+
+# persistent clipboard
+exec wl-paste -t text --watch clipman store --no-persist
+
+# screenshot
+bindsym $mod+Shift+s exec grimshot copy window
+bindsym Print exec grimshot save window
+
+bindsym XF86AudioLowerVolume exec pulsemixer --unmute --change-volume -5 && volume_notification
+bindsym XF86AudioRaiseVolume exec pulsemixer --unmute --change-volume +5 && volume_notification
+bindsym XF86AudioMute exec pulsemixer --toggle-mute && volume_notification
+
+bindsym XF86MonBrightnessDown exec xbacklight -5 -fps 60
+bindsym XF86MonBrightnessUp exec xbacklight +5 -fps 60
+bindsym Ctrl+XF86MonBrightnessDown exec xbacklight -1 -fps 60
+bindsym Ctrl+XF86MonBrightnessUp exec xbacklight +1 -fps 60
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -25 -fps 60
+bindsym Shift+XF86MonBrightnessUp exec xbacklight +25 -fps 60
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+floating_maximum_size -1 x -1
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Moving around:
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Workspaces:
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Cycle workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# TODO port
+# bindsym $mod+c exec python $HOME/bin/cycle_workspace.py
+# bindsym $mod+x exec python $HOME/bin/renumber_once.py
+
+# Layout stuff:
+bindsym $mod+v splitv
+bindsym $mod+Shift+v splith
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Scratchpad:
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Resizing containers:
+mode "resize" {
+  # left will shrink the containers width
+  # right will grow the containers width
+  # up will shrink the containers height
+  # down will grow the containers height
+  bindsym $left resize shrink width 10px
+  bindsym $down resize grow height 10px
+  bindsym $up resize shrink height 10px
+  bindsym $right resize grow width 10px
+
+  # Ditto, with arrow keys
+  bindsym Left resize shrink width 10px
+  bindsym Down resize grow height 10px
+  bindsym Up resize shrink height 10px
+  bindsym Right resize grow width 10px
+
+  # Fine
+  bindsym Ctrl+$left resize shrink width 1px
+  bindsym Ctrl+$down resize grow height 1px
+  bindsym Ctrl+$up resize shrink height 1px
+  bindsym Ctrl+$right resize grow width 1px
+  bindsym Ctrl+Left resize shrink width 1px
+  bindsym Ctrl+Down resize grow height 1px
+  bindsym Ctrl+Up resize shrink height 1px
+  bindsym Ctrl+Right resize grow width 1px
+
+  # Coarse
+  bindsym Shift+$left resize shrink width 100px
+  bindsym Shift+$down resize grow height 100px
+  bindsym Shift+$up resize shrink height 100px
+  bindsym Shift+$right resize grow width 100px
+  bindsym Shift+Left resize shrink width 100px
+  bindsym Shift+Down resize grow height 100px
+  bindsym Shift+Up resize shrink height 100px
+  bindsym Shift+Right resize grow width 100px
+
+  # Return to default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Theming
+font pango:Fira Mono 8
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4e4e4e #4e4e4e #d0d0d0 #586e75   #d0d0d0
+client.focused_inactive #1c1c1c #1c1c1c #657b83 #d0d0d0   #d0d0d0
+client.unfocused        #1c1c1c #1c1c1c #657b83 #d0d0d0   #d0d0d0
+client.urgent           #d68787 #d68787 #d0d0d0 #d0d0d0   #d0d0d0
+client.placeholder      #0c0c0c #0c0c0c #d0d0d0 #d0d0d0   #d0d0d0
+
+client.background       #ffffff
+
+default_border          pixel 0
+default_floating_border pixel 0
+smart_borders           on
+smart_gaps              on
+gaps inner              10
+gaps outer              0
+
+# popup_during_fullscreen leave_fullscreen
+
+# Status Bar:
+# Read `man 5 sway-bar` for more information about this section.
+bar swaybar_command waybar
+
+include /etc/sway/config.d/*

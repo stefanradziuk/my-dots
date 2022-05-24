@@ -1,0 +1,84 @@
+@define-color bg #1c1c1c;
+@define-color fg #ffffff;
+@define-color alert #f53c3c;
+@define-color focused #626262;
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Ubuntu Nerd Font";
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @bg;
+  color: white;
+}
+
+#window {
+  font-family: "Ubuntu";
+}
+
+#workspaces button {
+  transition: none;
+  padding: 0 5px;
+  background: @bg;
+  color: @fg;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+#workspaces button.focused {
+  background: @focused;
+}
+
+#mode {
+  font-weight: bold;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+  padding: 0 3px;
+  margin: 0 2px;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#network.disconnected {
+  background: @alert;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-spotify {
+  color: rgb(102, 220, 105);
+}
+
+#tray {
+}
+
