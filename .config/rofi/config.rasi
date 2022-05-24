@@ -1,0 +1,11 @@
+configuration {
+  modi: "run,window,drun,ssh";
+  fixed-num-lines: false;
+  terminal: "kitty";
+}
+
+@theme "compact"
+
+listview {
+  lines: 10;
+}
