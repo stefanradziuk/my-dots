@@ -4,10 +4,11 @@ font-size=20
 
 screenshots
 
-fade-in=0.4
+fade-in=0.5
 
-effect-blur=12x2
-effect-scale=0.1
+effect-scale=0.5
+effect-blur=6x2
+effect-scale=2
 
 show-failed-attempts
 show-keyboard-layout
@@ -20,7 +21,7 @@ indicator-caps-lock
 indicator-x-position=140
 indicator-y-position=960
 
-key-hl-color=d0d0d0ff
+key-hl-color=d0d0d0
 
 separator-color=00000000
 
@@ -33,8 +34,8 @@ inside-wrong-color=00000000
 ring-color=00000000
 ring-clear-color=00000000
 ring-caps-lock-color=00000000
-ring-ver-color=00000000
-ring-wrong-color=00000000
+ring-ver-color=7ac7d2
+ring-wrong-color=7e2233
 
 line-color=00000000
 line-clear-color=00000000
@@ -46,8 +47,8 @@ text-clear-color=ffd20400
 text-ver-color=d9d8d800
 text-wrong-color=ee2e2400
 
-bs-hl-color=d75f87ff
-caps-lock-key-hl-color=ffd204FF
-caps-lock-bs-hl-color=ee2e24FF
+bs-hl-color=d75f87
+caps-lock-key-hl-color=ffd204
+caps-lock-bs-hl-color=ee2e24
 disable-caps-lock-text
 text-caps-lock-color=009ddc
