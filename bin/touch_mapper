@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 [[ $# -eq 0 ]] && { echo "No arguments provided for touch_mapper" ; exit 1; }
 

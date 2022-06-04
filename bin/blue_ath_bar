@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # if [[ "$#" -ne 1 ]]; then
 #   echo "usage: blue_ath_bar -[st]"

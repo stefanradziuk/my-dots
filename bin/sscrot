@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # screenshots, copies to clipboard and saves a selected region, doesn't save if -c flag passed
 
 while getopts ":c" opt; do

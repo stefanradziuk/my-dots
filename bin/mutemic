@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 led="/sys/devices/platform/thinkpad_acpi/leds/tpacpi::micmute/brightness"
 user=$(who | awk '/0\.0/{print $1; exit;}')

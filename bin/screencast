@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 slop=$(slop --format='%x %y %w %h %g %i') || exit 1
 read -r X Y W H G ID < <(echo $slop)

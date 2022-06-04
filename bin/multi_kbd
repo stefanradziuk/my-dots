@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 USB_KEYBOARD=$(xinput -list | grep 'SONiX USB DEVICE\s\s' | awk -F '[=\\s\\t]' '{print $3}')
 LAPTOP_KEYBOARD=$(xinput -list | grep 'AT Translated Set 2 keyboard' | awk -F '[=\\s\\t]' '{print $4}')

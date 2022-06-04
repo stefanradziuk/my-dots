@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 PREV_VAL=/home/stefan/bin/backlight_prev_val
 

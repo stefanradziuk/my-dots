@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 STATE=/home/stefan/bin/flip_screen_state
 ROTATE=/home/stefan/bin/rotate_desktop.sh

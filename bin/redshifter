@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 RECENT_TEMP_FILE=/home/stefan/.cache/redshifter_recent_temp
 DEFAULT_TEMP=6500

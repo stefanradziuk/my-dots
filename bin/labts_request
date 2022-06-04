@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # currently using curl -n instead of -u
 # echo "password: "

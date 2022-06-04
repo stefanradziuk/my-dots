@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 OPTIONS="0\n5\n10\n15\n20"
 
