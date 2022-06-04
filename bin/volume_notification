@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# changeVolume
+# from https://wiki.archlinux.org/title/Dunst
+
+# Arbitrary but unique message tag
+msgTag="volume_notification"
+
+# Change the volume using alsa(might differ if you use pulseaudio)
+# amixer -c 0 set Master "$@" > /dev/null
+
+# Query pulsemixer for the current volume
+# and whether or not the speaker is muted
+volume="$(pulsemixer --get-volume | awk '{print $1}')"
+mute="$(pulsemixer --get-mute)"
+
+if [[ $volume == 0 || "$mute" == 1 ]]; then
+    # Show the sound muted notification
+    dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted"
+else
+    # Show the volume notification
+    dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
+    -h int:value:"$volume" "Volume: ${volume}%"
+fi
+
+# Play the volume changed sound
+# canberra-gtk-play -i audio-volume-change -d "changeVolume"
