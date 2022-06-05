@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[ -z "$IFTTT_TOKEN" ] && { echo "IFTTT_TOKEN is not set" ; exit 1; }
+
+URL="https://maker.ifttt.com/trigger/pingme/json/with/key/$IFTTT_TOKEN"
+
+PAYLOAD="{\"value\": \"$1\"}"
+
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d "$PAYLOAD" \
+  "$URL"
+
